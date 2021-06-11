@@ -1,19 +1,16 @@
 import json
-
-print("Loading function")
-
+  
 def lambda_handler(event, context):
+    #debugEvent(event)
+
     #.1 Parse the querystring parameters
-    transactionId = event["queryStringParameters"]["transactionId"]
-    transactionType = event["queryStringParameters"]["type"]
-    transactionAmount = event["queryStringParameters"]["amount"]
-    print(f"transactionId: {transactionId}")
+    params = readParams(event)
 
     #.2 Construct the body of the response
     responseBody = {
-        "transactionId": transactionId,
-        "transactionType": transactionType,
-        "transactionAmount": transactionAmount,
+        "transactionId": params["transactionId"],
+        "transactionType": params["transactionType"],
+        "transactionAmount": params["transactionAmount"],
         "message": "Hello from Lambda"
     }
 
@@ -25,3 +22,27 @@ def lambda_handler(event, context):
         ],
         'body': json.dumps(responseBody)
     }
+
+
+def readParams(event):
+    if not ("queryStringParameters" in event):
+        raise Exception("Querystring is missed")
+    
+    params = event["queryStringParameters"]
+
+    return {
+        "transactionId": readParam(params, "transactionId"),
+        "transactionType": readParam(params, "type"),
+        "transactionAmount": readParam(params, "amount")
+    }
+
+
+def readParam(params, paramName):
+    if paramName in params: return params[paramName]
+    else: raise Exception(f"{paramName} in Querystring is missed")
+
+
+def debugEvent(event):
+    print("debugEvent")
+    for x in event:
+        print(x)
