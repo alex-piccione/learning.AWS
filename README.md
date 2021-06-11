@@ -1,2 +1,20 @@
 # study.AWS
 Study AWS Lambda, Api Gateway
+
+
+## Courses
+
+- Pluralsight "Fundamental Cloud Concepts for AWS" by David Tucker
+- content.aws.training "Introduction to Serverless Development"
+- amazon.qwiklabs.com
+  + Security on AWS
+
+https://amazon.qwiklabs.com/quests/22?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Afalse%7D
+https://amazon.qwiklabs.com/my_learning
+https://amazon.qwiklabs.com/focuses/10383?parent=catalog
+https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_2254020_154131260
+
+## Stuff covered
+- Create an AWS Account
+- Create Budget
+- AWS Regions, Avalilability Zones and Edge Locations (Amazon Cloudfront) ([here](docs/aws-global-infrastructure.md))  
