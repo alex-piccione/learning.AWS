@@ -17,4 +17,7 @@ https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_
 ## Stuff covered
 - Create an AWS Account
 - Create Budget
+  Monthly budget (repeated) with max 10 GBP
 - AWS Regions, Avalilability Zones and Edge Locations (Amazon Cloudfront) ([here](docs/aws-global-infrastructure.md))  
+- Create a Lambda function
+  By defaul a new role is created with basic permission (Machine Policy, CloudWatch to write log)
