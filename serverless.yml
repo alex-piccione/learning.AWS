@@ -3,9 +3,9 @@ service: portfolio
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: python3.9
   stage: test
-  region: 
+  region: eu-central-1
 
 functions:
   randomNumber:

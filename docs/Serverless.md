@@ -48,4 +48,12 @@ Add it to a group (example "github-learning") with this policies:
 - IAMFullAccess   WHY ???
 - CloudWatchLogsFullAccess 
 - AWSLambdaRole   WHY ???
-- AWSCloudFormationFullAccess
+- AWSCloudFormationFullAccess: it is the actual deployment of the Lambda function
+- AmazonS3FullAccess: CloudFront "create Stack" step needs to create an S3 bucket
+
+It failed on CloudFront "create Stack" step:
+> Serverless: Creating Stack...
+> Serverless: Checking Stack create progress...
+> An error occurred: ServerlessDeploymentBucket - API: s3:CreateBucket Access Denied.
+
+So it needs permisisons to create an S3 bucket.  
