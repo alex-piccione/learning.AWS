@@ -1,9 +1,12 @@
 name: Portfolio deploy master
 
-on:
-  push:
-    branches:
-    - master
+on: [push]
+
+# the syntax below does not trigger the workflow 
+#on: 
+#  push:
+#    branches:
+#    - master
 
 jobs:
   deploy:
