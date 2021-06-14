@@ -17,9 +17,9 @@ jobs:
 
     - name: Check secrets
       run: |
-      # check secrets
-      echo AWS_ACCESS_KEY
-      echo ${{ secrets.AWS_ACCESS_KEY }}
+        # check secrets
+        echo AWS_ACCESS_KEY
+        echo ${{ secrets.AWS_ACCESS_KEY }}
 
 
     - name: Configure AWS credentials
