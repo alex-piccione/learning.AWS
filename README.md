@@ -1,7 +1,6 @@
 # study.AWS
 Learn AWS Lambda, Api Gateway, Serverless, CD/CI deployment
 
-
 ## Courses
 
 - Pluralsight "Fundamental Cloud Concepts for AWS" by David Tucker
@@ -25,6 +24,8 @@ https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_
 
 
 
-  ## Portfolio service
+## Portfolio service
 
-  Region: eu-central-1 (Frankfurt)
+[![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
+
+Region: eu-central-1 (Frankfurt)
