@@ -1,6 +1,8 @@
 # name of the serverless service
 service: portfolio
 
+configValidationMode: error
+
 provider:
   name: aws
   runtime: python3.8 
@@ -21,8 +23,12 @@ functions:
 #    - "!**"
 #    - "src/**"
 
-#package:
-#  individually: true
-#  exclude:
+package:
+  individually: true
+  exclude: 
+    - ./**
+  include:
+    - src/**
+
 #    # exclude everything
 #    - "**/*"
