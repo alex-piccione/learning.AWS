@@ -10,3 +10,9 @@ provider:
 functions:
   randomNumber:
     handler: src/handler.handle
+    name: reandomNumber
+
+# https://www.serverless.com/framework/docs/providers/aws/guide/packaging/
+package:
+  patterns:
+    - "src/**"

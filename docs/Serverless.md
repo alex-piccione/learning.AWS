@@ -57,3 +57,15 @@ It failed on CloudFront "create Stack" step:
 > An error occurred: ServerlessDeploymentBucket - API: s3:CreateBucket Access Denied.
 
 So it needs permisisons to create an S3 bucket.  
+
+_serverless.yml_
+```yaml
+provider:
+  name: aws
+  runtime: python3.8 
+  stage: test
+  region: eu-central-1
+```
+
+_2021-06-14_
+_python3.9_ still not supported, _dotnetcore2.1_ is the only dotnet supported.
