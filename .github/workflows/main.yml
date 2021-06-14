@@ -1,12 +1,9 @@
 name: Portfolio deploy master
 
-#on: [push]
-
-# the syntax below does not trigger the workflow 
 on: 
   push:
-    branches: [master]
-    #- master
+    branches: 
+    - main
 
 jobs:
   deploy:
@@ -22,7 +19,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with: 
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key-secret: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+        aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-central-1
 
     - name: Serverless deploy
