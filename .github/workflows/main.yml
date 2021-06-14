@@ -1,9 +1,9 @@
 name: Portfolio deploy master
 
 on: [push]
-#  push:
-#    branches:
-#    - master
+  push:
+    branches:
+    - master
 
 jobs:
   deploy:
