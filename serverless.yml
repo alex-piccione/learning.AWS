@@ -21,3 +21,6 @@ functions:
 
 package:
   individually: true
+  exclude:
+    # exclude everything
+    - "**/*"
