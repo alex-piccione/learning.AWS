@@ -13,9 +13,7 @@ functions:
   randomNumber:
     name: getReandomNumber
     handler: src/handler.handle
-    package:
-      individually: true
-    
+   
 
 # https://www.serverless.com/framework/docs/providers/aws/guide/packaging/
 #package:
@@ -29,6 +27,3 @@ package:
     - ./**
   include:
     - src/**
-
-#    # exclude everything
-#    - "**/*"
