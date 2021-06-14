@@ -1,5 +1,5 @@
 # study.AWS
-Study AWS Lambda, Api Gateway
+Learn AWS Lambda, Api Gateway, Serverless, CD/CI deployment
 
 
 ## Courses
@@ -21,3 +21,10 @@ https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_
 - AWS Regions, Avalilability Zones and Edge Locations (Amazon Cloudfront) ([here](docs/aws-global-infrastructure.md))  
 - Create a Lambda function
   By defaul a new role is created with basic permission (Machine Policy, CloudWatch to write log)
+
+
+
+
+  ## Portfolio service
+
+  Region: eu-central-1 (Frankfurt)

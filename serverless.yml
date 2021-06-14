@@ -1,0 +1,12 @@
+# name of the serverless service
+service: portfolio
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: test
+  region: 
+
+functions:
+  randomNumber:
+    handler: src/handler.handle
