@@ -69,3 +69,20 @@ provider:
 
 _2021-06-14_
 _python3.9_ still not supported, _dotnetcore2.1_ is the only dotnet supported.
+
+## Packaging
+https://www.serverless.com/framework/docs/providers/aws/guide/packaging/
+
+By default it copy everything in the root folder (apart fro predefined ignored files).  
+I tried to use "patterns" to exclude what is not meant to be packaged but it didn't worked.
+```yaml
+package:
+  patterns:
+    - "!**"
+    - "src/**"
+```
+
+```yaml
+package:
+  individually: true
+```
