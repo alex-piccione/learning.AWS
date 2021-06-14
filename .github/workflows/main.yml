@@ -9,9 +9,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
     environment: production
 
     steps:
@@ -23,7 +20,6 @@ jobs:
         # check secrets
         echo AWS_ACCESS_KEY
         echo ${{ secrets.AWS_ACCESS_KEY }}
-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
