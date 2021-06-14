@@ -1,6 +1,6 @@
 name: Portfolio deploy master
 
-on:
+on: [push]
   push:
     branches:
     - master
