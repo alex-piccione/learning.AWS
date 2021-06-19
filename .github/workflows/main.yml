@@ -48,6 +48,12 @@ jobs:
         #echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
         # create a copy (archive)
         #aws s3 mv s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
+        #if: aws s3 ls s3://<bucket_name> | grep 'filename'
+        count=aws s3api --list-objects --bucket ${S3_BUCKET} --query 'lenght(Content[].{Key: ${ZIP_FILE}})'
+        echo count = $count
+        if [ count > 0 ] then        
+          echo list-objects
+        fi
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
         # https://s3.eu-central-1.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
