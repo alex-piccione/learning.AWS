@@ -33,8 +33,8 @@ jobs:
     - name: Build C# Lambda & upload to S3
       env: 
         S3_BUCKET: "learning.functions"
-        ZIP_FILE: "function.zip"
-        ZIP_FILE_DATE: "function${{steps.datetime.outputs.date}}.zip"
+        #ZIP_FILE: "function.zip"
+        ZIP_FILE: "function-${{steps.datetime.outputs.datetime}}.zip"
       run: |
         cd src
         dotnet build -c RELEASE
@@ -42,7 +42,7 @@ jobs:
         # zip could need -recursive
         echo date = ${{ steps.datetime.outputs.date }}
         echo datetime = ${{ steps.datetime.outputs.datetime }}
-        echo ZIP_FILE_DATE = ${ZIP_FILE_DATE}
+        echo ZIP_FILE_DATE = ${ZIP_FILE} ${{ZIP_FILE}}
         zip -r ${ZIP_FILE} ./bin
         echo S3 bucket = ${S3_BUCKET}
         echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
