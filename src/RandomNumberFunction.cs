@@ -1,5 +1,6 @@
-using Amazon.Lambda.Core;
 using System;
+using Amazon.Lambda.APIGatewayEvents;
+using Amazon.Lambda.Core;
 //using Amazon.Lambda.Serialization.SystemTextJson;
 
 // ref: https://dzone.com/articles/under-the-hood-of-net-core-lambda-request
@@ -14,10 +15,13 @@ namespace Learning.Portfolio
     public class RandomNumber
     {
         Random fate = new Random(DateTime.Now.Millisecond);
-        public string Handle(string input, ILambdaContext context)
+        public APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
 
-            return fate.Next().ToString();
+            return new APIGatewayProxyResponse {
+                StatusCode = 200,
+                Body = fate.Next().ToString()
+            };
         }
     }
 }
