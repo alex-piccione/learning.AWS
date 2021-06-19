@@ -5,6 +5,9 @@ on:
     branches: 
     - main
 
+variables: 
+  S3_BUCKET: learning.functions
+
 jobs:
   deploy:
     name: Deploy
@@ -30,9 +33,10 @@ jobs:
     - name: Build C# Lambda
       run: |
         cd src
-        dotnet build 
+        dotnet build -c RELEASE
         ls ./bin
         zip -r function.zip ./bin
+        aws s3 cp ./function.zip s3:://learning.functions
 
     - name: Serverless deploy
       uses: serverless/github-action@master
