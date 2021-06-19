@@ -38,11 +38,11 @@ jobs:
       run: |        
         echo # Build
         cd src
-        dotnet build -c RELEASE        
+        dotnet publish -c RELEASE -publish       
         #ls ./bin/Release/netcoreapp3.1/
         
         echo # Zip
-        cd ./bin/Release/netcoreapp3.1/
+        cd ./publish
         # zip could need -recursive
         zip -r ${ZIP_FILE} ./*
        
@@ -59,6 +59,7 @@ jobs:
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
         # https://s3.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
+        # LambdaTest::LambdaTest.LambdaHandler::handleRequest
 
 
 # TEMP COMMENT
