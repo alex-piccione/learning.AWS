@@ -27,6 +27,12 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-central-1
 
+    - name: Build C# Lambda
+      run: |
+        cd src
+        dotnet build 
+        ls .
+
     - name: Serverless deploy
       uses: serverless/github-action@master
       with: 
