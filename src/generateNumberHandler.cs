@@ -10,7 +10,7 @@ using Amazon.Lambda.Core;
 namespace Learning.Portfolio
 {    
     public class RandomNumberFunction {
-        public string Handle(string input, Amazon.Lambda.Core.ILambdaContext context)
+        public string Handle(Request input, Amazon.Lambda.Core.ILambdaContext context)
         {
             // Read the stream into a string
             /*if (input != null)
@@ -24,4 +24,8 @@ namespace Learning.Portfolio
             return "456";
         }
     }   
+
+    public class Request {
+    }
 }
+
