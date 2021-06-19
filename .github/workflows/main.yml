@@ -61,9 +61,9 @@ jobs:
         #  --layer-name layer-1 \
         #  --content "S3Bucket=${S3_BUCKET},S3Key=${ZIP_FILE}" \
 
-        aws lambda update-function-code
-          --function-name learning_getRandomNumber
-          --s3-bucket ${S3_BUCKET}
+        aws lambda update-function-code \
+          --function-name learning_getRandomNumber \
+          --s3-bucket ${S3_BUCKET} \
           --s3-key ${ZIP_FILE}
 
         # https://s3.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
