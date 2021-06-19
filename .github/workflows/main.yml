@@ -33,7 +33,6 @@ jobs:
     - name: Build C# Lambda & upload to S3
       env: 
         S3_BUCKET: "learning.functions"
-        S3_BUCKET_ARN: "arn:aws:s3:::learning.functions"
         ZIP_FILE: "function_CSharp_GetRandom.zip"
         ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
       run: |        
@@ -66,8 +65,6 @@ jobs:
         aws lambda publish-layer-version \
           --layer-name layer-1 \
           --content "S3Bucket=${S3_BUCKET},S3Key=${ZIP_FILE}" \
-        #  --description "Shared Node.js runtime" \
-          --compatible-runtimes netcoreapp3.1
 
         # https://s3.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
         # LambdaTest::LambdaTest.LambdaHandler::handleRequest
