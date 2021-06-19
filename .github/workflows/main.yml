@@ -52,7 +52,9 @@ jobs:
         # s3api seems not being available
         # count=aws s3api --list-objects --bucket ${S3_BUCKET} --query 'lenght(Content[].{Key: ${ZIP_FILE} })'
         # echo count = $count
-        exists="aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE}""
+        aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE}
+        # exists="aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE}"
+        exists='None'
         echo exists=$exists
         if [ exists <> 'None' ] then
           echo file exists
