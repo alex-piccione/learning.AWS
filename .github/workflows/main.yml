@@ -67,7 +67,6 @@ jobs:
           --s3-key ${ZIP_FILE}
 
         # https://s3.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
-        # LambdaTest::LambdaTest.LambdaHandler::handleRequest
 
 
 # TEMP COMMENT
