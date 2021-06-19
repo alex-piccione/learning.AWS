@@ -46,9 +46,11 @@ jobs:
         zip -r ${ZIP_FILE} ./bin
         #echo S3 bucket = ${S3_BUCKET}
         #echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
-        # create a copy (archive)
-        aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
+        # create a copy (archive) if exists (--quiet)
+        aws s3 mv s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE} --quiet
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
+
+        # https://s3.eu-central-1.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
 
 # TEMP COMMENT
 #    - name: Serverless deploy
