@@ -31,7 +31,7 @@ jobs:
       run: |
         cd src
         dotnet build 
-        ls .
+        ls ./bin
 
     - name: Serverless deploy
       uses: serverless/github-action@master
