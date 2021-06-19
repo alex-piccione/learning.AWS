@@ -37,9 +37,11 @@ jobs:
         ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
       run: |
         cd src
-        dotnet build -c RELEASE
+        dotnet build -c RELEASE        
+        cp ./bin/Release/netcoreapp3.1/learning.deps.json  ./bin/Release/netcoreapp3.1/lambdaTest.deps.json
         ls ./bin/Release/netcoreapp3.1/
         # zip could need -recursive
+        echo "Zip"
         zip -r ${ZIP_FILE} ./bin/Release/netcoreapp3.1/
        
         exists=$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})
@@ -48,6 +50,8 @@ jobs:
           echo "create a copy (archive)"
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
         fi
+
+        echo "copy new zip file"
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
 
