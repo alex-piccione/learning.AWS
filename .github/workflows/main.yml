@@ -41,7 +41,7 @@ jobs:
         # zip could need -recursive
         zip -r ${ZIP_FILE} ./bin
         echo S3 bucket = ${S3_BUCKET}
-        aws s3 cp ./${ZIP_FILE} s3:://${S3_BUCKET}
+        echo aws s3 cp ./${ZIP_FILE} s3:://${S3_BUCKET}
 
     - name: Serverless deploy
       uses: serverless/github-action@master
