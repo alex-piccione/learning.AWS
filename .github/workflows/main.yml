@@ -38,8 +38,8 @@ jobs:
       run: |        
         echo # Build
         cd src
-        dotnet publish -c RELEASE -publish       
-        #ls ./bin/Release/netcoreapp3.1/
+        dotnet publish -c RELEASE -o publish       
+        #ls ./publish
         
         echo # Zip
         cd ./publish
