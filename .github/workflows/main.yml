@@ -46,19 +46,18 @@ jobs:
         zip -r ${ZIP_FILE} ./bin/Release/netcoreapp3.1/
         #echo S3 bucket = ${S3_BUCKET}
         #echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
-        # create a copy (archive)
-        #aws s3 mv s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
+
         #if: aws s3 ls s3://<bucket_name> | grep 'filename'
         # s3api seems not being available
         # count=aws s3api --list-objects --bucket ${S3_BUCKET} --query 'lenght(Content[].{Key: ${ZIP_FILE} })'
         # echo count = $count
         aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE}
-        exists="aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE}"
-        # exists='None'
+        exists=aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE}
         echo exists=$exists
         if [ exists <> 'None' ]
         then
-          echo file exists
+          echo create a copy (archive)
+          aws s3 mv s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
         fi
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
