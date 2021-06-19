@@ -13,6 +13,9 @@ https://amazon.qwiklabs.com/my_learning
 https://amazon.qwiklabs.com/focuses/10383?parent=catalog
 https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_2254020_154131260
 
+TO see:
+- https://nodogmablog.bryanhogan.net/2021/03/c-and-aws-lambdas-part-6-net-5-inside-a-container-inside-a-lambda/
+
 ## Stuff covered
 - Create an AWS Account
 - Create Budget
@@ -21,7 +24,9 @@ https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_
 - Create a shared role for Lambda functions
 - Create a Lambda function (with Python 3.8)
   By default a new role is created with basic permission (Machine Policy, CloudWatch to write log)
-- TODO: Create a Lamda function (with C#)
+- Create a simple Lambda function with C#
+- Deploy the Lambda within GitHub Action
+
 
 
 
