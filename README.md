@@ -39,3 +39,8 @@ Bucket for data: learning.portfolio
 https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html  
 Assume you have the src/myHandler.cs file.  
 ``dotnet lambda``
+
+
+## Utils
+
+``zip`` command: https://www.cyberciti.biz/faq/how-to-zip-a-folder-in-ubuntu-linux/

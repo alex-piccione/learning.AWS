@@ -5,10 +5,10 @@ on:
     branches: 
     - main
 
-variables: 
-  S3_BUCKET: learning.functions
+
 
 jobs:
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -31,12 +31,17 @@ jobs:
         aws-region: eu-central-1
 
     - name: Build C# Lambda
+      env: 
+        S3_BUCKET: "learning.functions"
+        ZIP_FILE: "function.zip"
       run: |
         cd src
         dotnet build -c RELEASE
         ls ./bin
-        zip -r function.zip ./bin
-        aws s3 cp ./function.zip s3:://learning.functions
+        # zip could need -recursive
+        zip -r ${ZIP_FILE} ./bin
+        echo S3 bucket = ${S3_BUCKET}
+        aws s3 cp ./${ZIP_FILE} s3:://${S3_BUCKET}
 
     - name: Serverless deploy
       uses: serverless/github-action@master
