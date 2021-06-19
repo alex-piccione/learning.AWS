@@ -35,25 +35,27 @@ jobs:
         S3_BUCKET: "learning.functions"
         ZIP_FILE: "function_CSharp_GetRandom.zip"
         ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
-      run: |
+      run: |        
+        echo # Build
         cd src
         dotnet build -c RELEASE        
         cp ./bin/Release/netcoreapp3.1/learning.deps.json  ./bin/Release/netcoreapp3.1/lambdaTest.deps.json
-        ls ./bin/Release/netcoreapp3.1/
-        # zip could need -recursive
+        #ls ./bin/Release/netcoreapp3.1/
+        
         echo # Zip
+        # zip could need -recursive
         zip -r ${ZIP_FILE} ./bin/Release/netcoreapp3.1/
        
-        echo check previous file...
+        echo # Check previous file...
         # exists=       
         echo ...end
         if [[ ! -z "$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})" ]] ; then
-          echo # create a copy (archive)
+          echo # Create a copy (archive)
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
           aws s3 rm s3://${S3_BUCKET}/${ZIP_FILE}
         fi
 
-        echo # copy new zip file
+        echo # Copy new zip file
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
 
