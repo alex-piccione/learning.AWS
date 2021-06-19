@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
+        <AssemblyName>Learning</AssemblyName>
         <TargetFramework>netcoreapp3.1</TargetFramework>
          <!-- required to generated the <proj>.runtimeconfig.json file -->
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.Core" Version="2.0.0"></PackageReference>
+        <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.0.0" />
     </ItemGroup>
 </Project>
