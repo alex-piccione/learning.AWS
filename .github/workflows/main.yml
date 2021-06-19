@@ -40,8 +40,8 @@ jobs:
         dotnet build -c RELEASE
         # ls ./bin
         # zip could need -recursive
-        echo date = ${ steps.datetime.outputs.date }
-        echo datetime = ${ steps.datetime.outputs.datetime }
+        echo date = ${{ steps.datetime.outputs.date }}
+        echo datetime = ${{ steps.datetime.outputs.datetime }}
         echo ZIP_FILE_DATE = ${ZIP_FILE_DATE}
         zip -r ${ZIP_FILE} ./bin
         echo S3 bucket = ${S3_BUCKET}
