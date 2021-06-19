@@ -65,7 +65,7 @@ jobs:
 
         aws lambda publish-layer-version \
           --layer-name layer-1 \
-          --content "S3Bucket=${S3_BUCKET_ARN},S3Key=${ZIP_FILE}" \
+          --content "S3Bucket=${S3_BUCKET},S3Key=${ZIP_FILE}" \
         #  --description "Shared Node.js runtime" \
           --compatible-runtimes netcoreapp3.1
 
