@@ -18,9 +18,7 @@ jobs:
 
     - name: Create datetime output
       id: datetime
-      run: | 
-        echo "::set-output name=date::$(date +'%Y-%m-%d')"
-        echo "::set-output name=datetime::$(date +'%Y-%m-%d_%H-%M-%S')"
+      run: echo "::set-output name=datetime::$(date +'%Y-%m-%d_%H-%M-%S')"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -38,11 +36,9 @@ jobs:
         echo "## Build"
         cd src
         dotnet publish -c RELEASE -o publish       
-        #ls ./publish
         
         echo "## Zip"
         cd ./publish
-        # zip could need -recursive
         zip -r ${ZIP_FILE} ./*
        
         echo "## Check previous file..."         
