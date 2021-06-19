@@ -45,8 +45,8 @@ jobs:
         echo ZIP_FILE_DATE = ${ZIP_FILE_DATE}
         zip -r ${ZIP_FILE} ./bin
         echo S3 bucket = ${S3_BUCKET}
-        echo aws s3 cp ./${ZIP_FILE} s3:/${S3_BUCKET}
-        aws s3 cp ./${ZIP_FILE} s3:/${S3_BUCKET}
+        echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
+        aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
 # TEMP COMMENT
 #    - name: Serverless deploy
