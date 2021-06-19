@@ -49,6 +49,7 @@ jobs:
         if [[ ! -z "$exists" ]] ; then
           echo "create a copy (archive)"
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
+          aws s3 rm s3://${S3_BUCKET}/${ZIP_FILE}
         fi
 
         echo "copy new zip file"
