@@ -43,8 +43,9 @@ jobs:
         #ls ./bin/Release/netcoreapp3.1/
         
         echo # Zip
+        cd ./bin/Release/netcoreapp3.1/
         # zip could need -recursive
-        zip -r ${ZIP_FILE} ./bin/Release/netcoreapp3.1/
+        zip -r ${ZIP_FILE} ./*
        
         echo # Check previous file...
         # exists=       
