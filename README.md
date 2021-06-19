@@ -18,8 +18,10 @@ https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_
 - Create Budget
   Monthly budget (repeated) with max 10 GBP
 - AWS Regions, Avalilability Zones and Edge Locations (Amazon Cloudfront) ([here](docs/aws-global-infrastructure.md))  
-- Create a Lambda function
-  By defaul a new role is created with basic permission (Machine Policy, CloudWatch to write log)
+- Create a shared role for Lambda functions
+- Create a Lambda function (with Python 3.8)
+  By default a new role is created with basic permission (Machine Policy, CloudWatch to write log)
+- TODO: Create a Lamda function (with C#)
 
 
 
@@ -29,3 +31,11 @@ https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_
 [![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
 
 Region: eu-central-1 (Frankfurt)
+Role: learning
+Bucket for data: learning.portfolio
+
+
+## Deplot C# Lamda
+https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html  
+Assume you have the src/myHandler.cs file.  
+``dotnet lambda``

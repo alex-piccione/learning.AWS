@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!--
+            netcoreapp3.1
+            netstandard2.0
+        -->
+        <!-- required to generated the <proj>.runtimeconfig.json file -->
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.Core" Version="1.2.0"></PackageReference>
+    </ItemGroup>
+</Project>
