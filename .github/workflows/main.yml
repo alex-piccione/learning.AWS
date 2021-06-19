@@ -45,7 +45,7 @@ jobs:
         zip -r ${ZIP_FILE} ./bin/Release/netcoreapp3.1/
        
         echo check previous file...
-        exists=$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})        
+        exists="$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})"        
         echo ...end
         if [[ ! -z "$exists" ]] ; then
           echo # create a copy (archive)
