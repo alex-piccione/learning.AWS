@@ -33,19 +33,21 @@ jobs:
     - name: Build C# Lambda & upload to S3
       env: 
         S3_BUCKET: "learning.functions"
-        #ZIP_FILE: "function.zip"
-        ZIP_FILE: "function_${{steps.datetime.outputs.datetime}}.zip"
+        ZIP_FILE: "function_CSharp_GetRandom.zip"
+        ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
       run: |
         cd src
         dotnet build -c RELEASE
         # ls ./bin
         # zip could need -recursive
-        echo date = ${{ steps.datetime.outputs.date }}
-        echo datetime = ${{ steps.datetime.outputs.datetime }}
-        echo ZIP_FILE_DATE = ${ZIP_FILE}
+        #echo date = ${{ steps.datetime.outputs.date }}
+        #echo datetime = ${{ steps.datetime.outputs.datetime }}
+        #echo ZIP_FILE_DATE = ${ZIP_FILE}
         zip -r ${ZIP_FILE} ./bin
-        echo S3 bucket = ${S3_BUCKET}
-        echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
+        #echo S3 bucket = ${S3_BUCKET}
+        #echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
+        # create a copy (archive)
+        aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
 # TEMP COMMENT
