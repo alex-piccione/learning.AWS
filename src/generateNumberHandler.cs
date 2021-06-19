@@ -1,12 +1,13 @@
 using System;
 using System.IO;
 using Amazon.Lambda.Core;
+using Learning.Portfolio;
 // Amazon.Lambda.Serialization.SystemTextJson
 
 // ref: https://dzone.com/articles/under-the-hood-of-net-core-lambda-request
 
 // learning::Learning.Portfolio.RandomNumberFunction::Handle
-[assembly:LambdaSerializer(typeof(String))]
+[assembly:LambdaSerializer(typeof(Request))]
 namespace Learning.Portfolio
 {    
     public class RandomNumberFunction {
