@@ -58,6 +58,18 @@ jobs:
         echo # Copy new zip file
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
+        echo # Publish Lambda
+        # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-version.html
+        # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-layer-version.html
+
+        aws lambda publish-version --function-name learning_getRandomNumber
+
+        #aws lambda publish-layer-version \
+        #  --layer-name "$()" \
+        #  --content "S3Bucket=$(S3BucketName),S3Key=$(S3SharedNodeRuntimePrefix).zip" \
+        #  --description "Shared Node.js runtime" \
+        #  --compatible-runtimes nodejs10.x
+
         # https://s3.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
         # LambdaTest::LambdaTest.LambdaHandler::handleRequest
 
