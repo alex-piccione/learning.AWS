@@ -41,18 +41,17 @@ jobs:
         cp ./bin/Release/netcoreapp3.1/learning.deps.json  ./bin/Release/netcoreapp3.1/lambdaTest.deps.json
         ls ./bin/Release/netcoreapp3.1/
         # zip could need -recursive
-        echo "Zip"
+        echo # Zip
         zip -r ${ZIP_FILE} ./bin/Release/netcoreapp3.1/
        
-        exists=$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})
-        echo exists=$exists
+        exists=$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})        
         if [[ ! -z "$exists" ]] ; then
-          echo "create a copy (archive)"
+          echo # create a copy (archive)
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
           aws s3 rm s3://${S3_BUCKET}/${ZIP_FILE}
         fi
 
-        echo "copy new zip file"
+        echo # copy new zip file
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
 
