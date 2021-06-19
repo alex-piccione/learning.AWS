@@ -47,9 +47,7 @@ jobs:
         # zip could need -recursive
         zip -r ${ZIP_FILE} ./*
        
-        echo "# Check previous file...
-        # exists=       
-        echo ...end
+        echo "# Check previous file..."         
         if [[ ! -z "$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})" ]] ; then
           echo "# Create a copy, archive"
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
