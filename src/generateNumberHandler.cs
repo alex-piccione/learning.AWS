@@ -6,7 +6,7 @@ using System.IO;
 namespace Learning.Portfolio
 {
     public class RandomNumberFunction {
-        public string Handle(string input, Amazon.Lambda.Core.ILambdaContext conext)
+        public string Handle(string input, Amazon.Lambda.Core.ILambdaContext context)
         {
             // Read the stream into a string
             /*if (input != null)

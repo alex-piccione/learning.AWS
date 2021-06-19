@@ -6,7 +6,6 @@ on:
     - main
 
 
-
 jobs:
 
   deploy:
@@ -18,10 +17,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-#    - name: Check secrets
-#      run: |
-#        # check secrets
-#        echo AWS_ACCESS_KEY
+    - name: Create datetime output
+      id: datetime
+      run: | 
+        echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        echo "::set-output name=datetime::$(date +'%Y-%m-%d_%H-%M-%S')"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -30,24 +30,29 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-central-1
 
-    - name: Build C# Lambda
+    - name: Build C# Lambda & upload to S3
       env: 
         S3_BUCKET: "learning.functions"
         ZIP_FILE: "function.zip"
+        ZIP_FILE_DATE: "function${{steps.datetime.outputs.date}}.zip"
       run: |
         cd src
         dotnet build -c RELEASE
-        ls ./bin
+        # ls ./bin
         # zip could need -recursive
+        echo date = ${ steps.datetime.outputs.date }
+        echo datetime = ${ steps.datetime.outputs.datetime }
+        echo ZIP_FILE_DATE = ${ZIP_FILE_DATE}
         zip -r ${ZIP_FILE} ./bin
         echo S3 bucket = ${S3_BUCKET}
-        echo aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
-        aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
+        echo aws s3 cp ./${ZIP_FILE} s3:/${S3_BUCKET}
+        aws s3 cp ./${ZIP_FILE} s3:/${S3_BUCKET}
 
-    - name: Serverless deploy
-      uses: serverless/github-action@master
-      with: 
-        args: deploy
-#      env: 
-#        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-    
+# TEMP COMMENT
+#    - name: Serverless deploy
+#      uses: serverless/github-action@master
+#      with: 
+#        args: deploy
+##      env: 
+##        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+
