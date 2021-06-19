@@ -46,6 +46,7 @@ jobs:
        
         echo check previous file...
         exists=$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})        
+        echo ...end
         if [[ ! -z "$exists" ]] ; then
           echo # create a copy (archive)
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
