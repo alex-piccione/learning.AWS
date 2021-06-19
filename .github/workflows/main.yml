@@ -32,6 +32,7 @@ jobs:
         cd src
         dotnet build 
         ls ./bin
+        zip -r function.zip ./bin
 
     - name: Serverless deploy
       uses: serverless/github-action@master
