@@ -10,9 +10,13 @@ provider:
   region: eu-central-1
 
 functions:
-  randomNumber:
+  ping:
     name: getReandomNumber
-    handler: src/handler.handle
+    handler: src/ping.handle
+
+  randomNumber:
+    name: random-number
+    handler: src/randomNumber.get
    
 
 # https://www.serverless.com/framework/docs/providers/aws/guide/packaging/
