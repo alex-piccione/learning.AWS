@@ -87,6 +87,4 @@ jobs:
 ##      env: 
 ##        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
 
-
-aws apigateway get-rest-apis --query 'items[?name==`Portfolio`]'
  
