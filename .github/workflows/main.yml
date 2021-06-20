@@ -72,7 +72,7 @@ jobs:
         echo "## API Gateway setup"
         api_name=Portfolio
         #API=${API_ID}
-        apis=$(aws apigateway get-rest-apis --query 'items[?name=="Portfolio"]')
+        apis=$(aws apigateway get-rest-apis --query "items[?name=='Portfolio']")
         api_id=$apis | jq '.[].id'
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
@@ -85,4 +85,6 @@ jobs:
 #        args: deploy
 ##      env: 
 ##        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+
+echo api id=$api_id
 
