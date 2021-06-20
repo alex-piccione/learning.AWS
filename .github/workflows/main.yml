@@ -73,7 +73,8 @@ jobs:
         api_name=Portfolio
         #API=${API_ID}
         apis=$(aws apigateway get-rest-apis --query "items[?name=='Portfolio']")
-        api_id=$apis | jq '.[].id'
+        echo $apis
+        api_id=$(echo $apis | jq ".[].id")
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
@@ -87,3 +88,5 @@ jobs:
 ##        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
 
 
+aws apigateway get-rest-apis --query 'items[?name==`Portfolio`]'
+ 
