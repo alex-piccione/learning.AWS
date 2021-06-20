@@ -86,5 +86,4 @@ jobs:
 ##      env: 
 ##        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
 
-echo api id=$api_id
 
