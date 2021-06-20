@@ -8,6 +8,9 @@ EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Learning.Tests", "Tests\Learning.Tests.fsproj", "{9D8CAFAE-BCE8-482B-8FC5-EA810F22DB30}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3B712B05-D6CF-41B4-8270-192ADD564C4D}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github actions", "github actions", "{9A2FBEC5-4927-48D1-B59C-26E88258B8EE}"
 	ProjectSection(SolutionItems) = preProject

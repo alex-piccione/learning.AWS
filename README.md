@@ -14,6 +14,8 @@ https://amazon.qwiklabs.com/focuses/10383?parent=catalog
 https://aws.amazon.com/training/self-paced-labs/?src=aws_training_email&ref_=pe_2254020_154131260
 
 TO see:
+- *** https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/blank-csharp
+- https://github.com/aws/aws-lambda-dotnet#dotnet-cli-templates
 - https://nodogmablog.bryanhogan.net/2021/03/c-and-aws-lambdas-part-6-net-5-inside-a-container-inside-a-lambda/
 
 ## Stuff covered
