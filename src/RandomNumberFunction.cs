@@ -1,6 +1,6 @@
-using System;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
+using System;
 //using Amazon.Lambda.Serialization.SystemTextJson;
 
 // ref: https://dzone.com/articles/under-the-hood-of-net-core-lambda-request
@@ -17,10 +17,12 @@ namespace Learning.Portfolio
         Random fate = new Random(DateTime.Now.Millisecond);
         public APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
+            var max = request.GetIntFromQueryString("max", int.MaxValue);
 
-            return new APIGatewayProxyResponse {
+            return new APIGatewayProxyResponse
+            {
                 StatusCode = 200,
-                Body = fate.Next().ToString()
+                Body = fate.Next(max).ToString()
             };
         }
     }
