@@ -32,10 +32,10 @@ jobs:
         S3_BUCKET: "learning.functions"
         ZIP_FILE: "function_CSharp_GetRandom.zip"
         ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
-      run: |        
+      run: |
         echo "## Build"
         cd src
-        dotnet publish -c RELEASE -o publish       
+        dotnet publish Learning.csproj -c RELEASE -o publish
         
         echo "## Zip"
         cd ./publish
