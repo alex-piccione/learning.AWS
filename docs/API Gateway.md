@@ -17,3 +17,15 @@ Lambda, HTTP backends
 Develop a REST API where you gain complete control over the request and response along with API management capabilities.
 Works with the following:
 Lambda, HTTP, AWS Services
+
+
+## API Proxy
+
+When the API is deployed a URL of this type is created:  
+https://***.execute-api.eu-central-1.amazonaws.com/{stage}/{resourge}?param1=100  
+Every Resource and Action have to be mapped to the LAmda function.  
+
+Using a Proxy ({Proxy+}) is possible to make the HTTP request pass through to the Lambda function (or an external endpoint) directly.
+https://***.execute-api.eu-central-1.amazonaws.com/{stage}   
+that goes directly to the wanted LAmbda function, without predefined mapping:   
+https://***.execute-api.eu-central-1.amazonaws.com/{stage}/learning_getRandomNumber?param1=100  
