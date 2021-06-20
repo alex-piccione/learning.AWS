@@ -44,7 +44,7 @@ jobs:
         echo "## Create backup" 
         if [[ ! -z "$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})" ]] ; then
           echo "remove previous"
-          aws s3 rm s3://${S3_BUCKET} --exclude "${ZIP_FILE}"
+          aws s3 rm s3://${S3_BUCKET}/* --exclude "${ZIP_FILE}"
           echo "create a copy, archive"
           aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} s3://${S3_BUCKET}/${ZIP_FILE_ARCHIVE}
           aws s3 rm s3://${S3_BUCKET}/${ZIP_FILE}
