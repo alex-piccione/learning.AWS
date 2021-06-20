@@ -32,6 +32,7 @@ jobs:
         S3_BUCKET: "learning.functions"
         ZIP_FILE: "function_CSharp_GetRandom.zip"
         ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
+        API_ID: "***"
       run: |
         echo "## Build"
         cd src
@@ -68,7 +69,13 @@ jobs:
           --s3-bucket ${S3_BUCKET} \
           --s3-key ${ZIP_FILE}
 
-        # https://s3.amazonaws.com/learning.functions/function_CSharp_GetRandom.zip
+        echo "## API Gateway setup"
+        api_name=Portfolio
+        #API=${API_ID}
+        apis=aws apigateway get-rest-apis --query 'items[?name=="$api_name"]'
+        api_id=echo $apis | jq '.[].id'
+        echo api id=$api_id
+        #aws apigateway get-resources --rest-api-id $API
 
 
 # TEMP COMMENT
