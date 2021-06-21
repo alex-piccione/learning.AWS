@@ -1,4 +1,4 @@
-# study.AWS
+# Learning AWS
 Learn AWS Lambda, Api Gateway, Serverless, CD/CI deployment
 
 ## Courses
@@ -32,7 +32,6 @@ TO see:
 
 
 
-
 ## Portfolio service
 
 [![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
@@ -42,7 +41,7 @@ Role: learning
 Bucket for data: learning.portfolio
 
 
-## Deplot C# Lamda
+## Deplot C# Lambda
 https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html  
 Assume you have the src/myHandler.cs file.  
 ``dotnet lambda``
