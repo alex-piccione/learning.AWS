@@ -78,13 +78,15 @@ jobs:
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
-
-
-    - name: Serverless deploy
+    - name: Serverless Portfolio
       uses: serverless/github-action@master
-      with: 
-        args: deploy
-      #env: 
-      #  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+      with:
+        args: deploy --config ./Portfolio/serverless.yml
 
- 
+
+#    - name: Serverless deploy
+#      uses: serverless/github-action@master
+#      with: 
+#        args: deploy
+#      #env: 
+#      #  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}

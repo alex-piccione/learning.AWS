@@ -1,4 +1,4 @@
-#service: Portfolio C#
+﻿service: Portfolio Serverless
 
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
@@ -6,8 +6,8 @@
 #  individually: true
 
 functions:
-  getRandom: # any name
-    handler: Learning::LearningPortfolio::RandomNumber   # assembly::namespace.class::method
+  portfolio: # any name
+    handler: Learning::Learning.Portfolio.RandomNumber::Handle   # assembly::namespace.class::method
     #package:
     #  artifact: ../my-package.zip
     #warmup: true
@@ -15,9 +15,9 @@ functions:
     #   - functionErrors
     #   - functionDuration
     events:
-      # - http: GET random-number
+      # - http: GET fund
       - http: 
-        path: random-number
+        path: fund
         methid: post
         # cors: true
         #authorizer:
