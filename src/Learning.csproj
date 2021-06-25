@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <AssemblyName>Learning</AssemblyName>
+    <PropertyGroup>        
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>Learning</AssemblyName>
+        <AWSProjectType>Lambda</AWSProjectType>
          <!-- required to generated the <proj>.runtimeconfig.json file -->
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     </PropertyGroup>

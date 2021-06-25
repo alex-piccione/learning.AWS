@@ -1,0 +1,30 @@
+#service: Portfolio C#
+
+#package:
+#  individually: true
+
+functions:
+  getRandom: # any name
+    handler: Learning::LearningPortfolio::RandomNumber   # assembly::namespace.class::method
+    #package:
+    #  artifact: ../my-package.zip
+    #warmup: true
+    #alarms:
+    #   - functionErrors
+    #   - functionDuration
+    events:
+      # - http: GET random-number
+      - http: 
+        path: random-number
+        methid: post
+        # cors: true
+        #authorizer:
+        #  type: "COGNITO_USER_POOLS"
+        #  scopes: 
+        #    - ...
+        #    - ... 
+        #  authorizedId:
+        #    Fn::ImportValue: "..."
+
+
+
