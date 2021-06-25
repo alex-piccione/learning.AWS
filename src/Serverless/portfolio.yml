@@ -6,8 +6,8 @@
 provider:
   name: aws
   runtime: nodejs14.x  # explicit to avoid warning
-  stage: test
-  region: eu-central-1
+  #stage: test # passed
+  #region: eu-central-1
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
   #deploymentBucket:
   #  name: ${file(./shared-variables.yml):deploymentBucket.name}
