@@ -58,7 +58,7 @@ jobs:
         echo "## Copy new zip file"
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
-        echo .
+        echo
         echo "## Publish Lambda"
         # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-version.html
         # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-layer-version.html
@@ -75,6 +75,7 @@ jobs:
           --s3-bucket ${S3_BUCKET} \
           --s3-key ${ZIP_FILE}
 
+        echo
         echo "## API Gateway setup"
         api_name=Learning
         #API=${API_ID}
@@ -84,10 +85,13 @@ jobs:
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
-        echo .
+        echo
         echo "## Create bucket for serverless"
-        aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
-          --create-bucket-configuration LocationConstraint=${AWS_REGION}
+        if [[ ! -z "$(aws s3 ls s3://learning-portfolio-functions)" ]] ; then
+          echo "create bucket"
+          aws s3api create-bucket --acl private --bucket  \
+            --create-bucket-configuration LocationConstraint=${AWS_REGION}
+        fi
 
     - name: Serverless Portfolio
       uses: serverless/github-action@master
