@@ -5,7 +5,7 @@
 #provider: aws
 provider:
   name: aws
-  runtime: nodejs14.x  # explicit to avoid warning
+  runtime: dotnetcore3.1 # nodejs14.x  # explicit to avoid warning
   #stage: test # passed
   #region: eu-central-1
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
@@ -17,7 +17,7 @@ package:
 
 functions:
   portfolio: # any name
-    handler: learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
+    handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     package:
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     #warmup: true
