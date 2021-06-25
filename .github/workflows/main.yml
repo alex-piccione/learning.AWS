@@ -83,6 +83,10 @@ jobs:
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
+        # create bucket for serverless deploy
+        echo "## Creat ebucket for serverless"
+        aws s3 create-bucket --acl private --bucket learning-portfolio-functions
+
     - name: Serverless Portfolio
       uses: serverless/github-action@master
       with:
