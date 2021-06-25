@@ -16,7 +16,7 @@ functions:
   portfolio: # any name
     handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     package:
-      artifact: ../../publish/lambda.zip
+      artifact: src/publish/lambda.zip
     #warmup: true
     #alarms:
     #   - functionErrors
