@@ -7,6 +7,7 @@ provider:
   name: aws
   stage: test
   region: eu-central-1
+  lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
 
 #package:
 #  individually: true
@@ -15,7 +16,7 @@ functions:
   portfolio: # any name
     handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     package:
-      artifact: ../../../publish/lambda.zip
+      artifact: ../../publish/lambda.zip
     #warmup: true
     #alarms:
     #   - functionErrors
