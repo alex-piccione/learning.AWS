@@ -88,8 +88,8 @@ jobs:
         echo
         echo "## Create bucket for serverless"
         # forse bucket creation
-        aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
-          --create-bucket-configuration LocationConstraint=${AWS_REGION}
+        #aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
+        #  --create-bucket-configuration LocationConstraint=${AWS_REGION}
         # use head-bucket --bucket https://docs.aws.amazon.com/cli/latest/reference/s3api/head-bucket.html
         if [[ ! -z "$(aws s3 ls s3://learning-portfolio-functions)" ]] ; then
           echo "create bucket"
