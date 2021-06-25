@@ -17,7 +17,7 @@ package:
 
 functions:
   portfolio: # any name
-    handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
+    handler: learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     package:
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     #warmup: true
