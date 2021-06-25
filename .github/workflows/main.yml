@@ -87,7 +87,7 @@ jobs:
         echo .
         echo "## Create bucket for serverless"
         aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
-          --region ${AWS_REGION}  --create-bucket-configuration LocationConstraint=${AWS_REGION}
+          --create-bucket-configuration LocationConstraint=${AWS_REGION}
 
     - name: Serverless Portfolio
       uses: serverless/github-action@master
