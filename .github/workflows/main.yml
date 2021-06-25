@@ -82,6 +82,7 @@ jobs:
       uses: serverless/github-action@master
       with:
         args: deploy --config ./src/Serverless/portfolio.yml
+        # --stage production --region eu-central-1
 
 
 #    - name: Serverless deploy
