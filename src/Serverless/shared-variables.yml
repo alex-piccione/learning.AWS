@@ -1,0 +1,6 @@
+﻿
+
+# refer to a variable like
+# aaa: ${file(../<path to>/shared-variables.yml):aaa}
+
+zipFile: "src/publish/lambda.zip"
