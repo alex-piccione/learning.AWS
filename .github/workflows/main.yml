@@ -83,19 +83,11 @@ jobs:
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
-        # create bucket for serverless deploy
-        echo "## Creat ebucket for serverless"
-        aws s3 create-bucket --acl private --bucket learning-portfolio-functions
+        echo "## Create bucket for serverless"
+        aws s3api create-bucket --acl private --bucket learning-portfolio-functions
 
     - name: Serverless Portfolio
       uses: serverless/github-action@master
       with:
         args: deploy --config ./src/Serverless/portfolio.yml --stage ${AWS_STAGE} --region ${AWS_REGION}
 
-
-#    - name: Serverless deploy
-#      uses: serverless/github-action@master
-#      with: 
-#        args: deploy
-#      #env: 
-#      #  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
