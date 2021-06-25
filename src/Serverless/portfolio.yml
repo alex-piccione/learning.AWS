@@ -17,8 +17,8 @@ provider:
 functions:
   portfolio: # any name
     handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
-    package:
-      artifact: ${file(shared-variables.yml):zipFile}
+    #package:
+    #  artifact: ${file(shared-variables.yml):zipFile}
     #warmup: true
     #alarms:
     #   - functionErrors
@@ -38,4 +38,5 @@ functions:
         #    Fn::ImportValue: "..."
 
 
-
+    #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
+    #<file src="Services\ClientDataCollection.Lambda\bin\Release\netcoreapp3.1\clientdatacollectiondomain-deploy-package.zip" target="functions" />

@@ -69,6 +69,11 @@ jobs:
           --s3-bucket ${S3_BUCKET} \
           --s3-key ${ZIP_FILE}
 
+        aws lambda update-function-code \
+          --function-name learning_portfolio_fund_POST \
+          --s3-bucket ${S3_BUCKET} \
+          --s3-key ${ZIP_FILE}
+
         echo "## API Gateway setup"
         api_name=Portfolio
         #API=${API_ID}
