@@ -1,4 +1,4 @@
-﻿service: PortfolioServerless
+﻿service: LearningPortfolio
 
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
@@ -26,7 +26,7 @@ functions:
     events:
       # - http: GET fund
       - http: 
-          path: portfolio/fund
+          path: learning/portfolio/fund
           method: POST
         # cors: true
         #authorizer:
