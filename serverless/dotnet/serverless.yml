@@ -1,5 +1,7 @@
 #service: Portfolio C#
 
+# https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
+
 #package:
 #  individually: true
 

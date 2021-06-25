@@ -79,12 +79,12 @@ jobs:
         #aws apigateway get-resources --rest-api-id $API
 
 
-# TEMP COMMENT
-#    - name: Serverless deploy
-#      uses: serverless/github-action@master
-#      with: 
-#        args: deploy
-##      env: 
-##        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+
+    - name: Serverless deploy
+      uses: serverless/github-action@master
+      with: 
+        args: deploy
+      #env: 
+      #  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
 
  
