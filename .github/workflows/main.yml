@@ -89,12 +89,12 @@ jobs:
         echo "## Create bucket for serverless"
         if [[ ! -z "$(aws s3 ls s3://learning-portfolio-functions)" ]] ; then
           echo "create bucket"
-          aws s3api create-bucket --acl private --bucket  \
+          aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
             --create-bucket-configuration LocationConstraint=${AWS_REGION}
         fi
 
     - name: Serverless Portfolio
       uses: serverless/github-action@master
       with:
-        args: deploy --config ./src/Serverless/portfolio.yml --stage ${env:AWS_STAGE} --region ${env:AWS_REGION}
+        args: deploy --config ./src/Serverless/portfolio.yml --stage ${{env.AWS_STAGE}} --region ${{env.AWS_REGION}}
 
