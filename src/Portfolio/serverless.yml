@@ -9,7 +9,7 @@ functions:
   portfolio: # any name
     handler: Learning::Learning.Portfolio.RandomNumber::Handle   # assembly::namespace.class::method
     #package:
-    #  artifact: ../my-package.zip
+    #  artifact: ../my-package.zip  ./publish/lambda.zip
     #warmup: true
     #alarms:
     #   - functionErrors

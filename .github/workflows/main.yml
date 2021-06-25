@@ -30,8 +30,8 @@ jobs:
     - name: Build C# Lambda & upload to S3
       env: 
         S3_BUCKET: "learning.functions"
-        ZIP_FILE: "function_CSharp_GetRandom.zip"
-        ZIP_FILE_ARCHIVE: "function_CSharp_GetRandom_${{steps.datetime.outputs.datetime}}.zip"
+        ZIP_FILE: "lambda.zip"
+        ZIP_FILE_ARCHIVE: "lambda_${{steps.datetime.outputs.datetime}}.zip"
         API_ID: "***"
       run: |
         echo "## Build"
@@ -81,7 +81,7 @@ jobs:
     - name: Serverless Portfolio
       uses: serverless/github-action@master
       with:
-        args: deploy --config ./Portfolio/serverless.yml
+        args: deploy --config ./src/Portfolio/serverless.yml
 
 
 #    - name: Serverless deploy
