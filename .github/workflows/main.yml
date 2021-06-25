@@ -87,6 +87,8 @@ jobs:
 
         echo
         echo "## Create bucket for serverless"
+        aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
+        # use head-bucket --bucket https://docs.aws.amazon.com/cli/latest/reference/s3api/head-bucket.html
         if [[ ! -z "$(aws s3 ls s3://learning-portfolio-functions)" ]] ; then
           echo "create bucket"
           aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
