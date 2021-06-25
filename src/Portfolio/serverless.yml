@@ -13,7 +13,7 @@ provider:
 
 functions:
   portfolio: # any name
-    handler: Learning::Learning.Portfolio.RandomNumber::Handle   # assembly::namespace.class::method
+    handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     #package:
     #  artifact: ../my-package.zip  ./publish/lambda.zip
     #warmup: true
