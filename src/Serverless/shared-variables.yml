@@ -4,3 +4,5 @@
 # aaa: ${file(../<path to>/shared-variables.yml):aaa}
 
 zipFile: "src/publish/lambda.zip"
+deploymentBucket:
+  name: "#(deploymentBucket.name)"
