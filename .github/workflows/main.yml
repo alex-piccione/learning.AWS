@@ -84,8 +84,7 @@ jobs:
         #aws apigateway get-resources --rest-api-id $API
 
         echo "## Create bucket for serverless"
-        aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
-          --create-bucket-configuration {"LocationConstraint": "${AWS_REGION}"
+        aws s3api create-bucket --acl private --bucket learning-portfolio-functions --region ${AWS_REGION}
 
     - name: Serverless Portfolio
       uses: serverless/github-action@master
