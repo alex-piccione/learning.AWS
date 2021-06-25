@@ -58,6 +58,7 @@ jobs:
         echo "## Copy new zip file"
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
+        echo .
         echo "## Publish Lambda"
         # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-version.html
         # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-layer-version.html
@@ -83,8 +84,9 @@ jobs:
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
+        echo .
         echo "## Create bucket for serverless"
-        aws s3api create-bucket --acl private --bucket learning-portfolio-functions /
+        aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
           --region ${AWS_REGION}  --create-bucket-configuration LocationConstraint=${AWS_REGION}
 
     - name: Serverless Portfolio
