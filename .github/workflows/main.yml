@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
 
+    env:
+      AWS_STAGE: test
+      AWS_REGION: eu-central-1
+      
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -29,8 +34,6 @@ jobs:
 
     - name: Build C# Lambda & upload to S3
       env: 
-        AWS_STAGE: test
-        AWS_REGION: eu-central-1
         S3_BUCKET: "learning.functions"
         ZIP_FILE: "lambda.zip"
         ZIP_FILE_ARCHIVE: "lambda_${{steps.datetime.outputs.datetime}}.zip"
@@ -85,9 +88,9 @@ jobs:
       uses: serverless/github-action@master
       with:
         args: |
-          deploy --config ./src/Serverless/portfolio.yml
-          --stage ${AWS_STAGE}
-          --region ${AWS_REGION}
+          deploy --config ./src/Serverless/portfolio.yml --stage test --region eu-central-1
+          #--stage ${AWS_STAGE}
+          #--region ${AWS_REGION}
         # --stage production --region eu-central-1
 
 
