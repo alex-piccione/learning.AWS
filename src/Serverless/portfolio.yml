@@ -9,8 +9,8 @@ provider:
   #stage: test # passed
   #region: eu-central-1
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
-  #deploymentBucket:
-  #  name: ${file(./shared-variables.yml):deploymentBucket.name}
+  deploymentBucket:
+    name: LearningPortfolio_functions # ${file(./shared-variables.yml):deploymentBucket.name}
 #package:
 #  individually: true
 
