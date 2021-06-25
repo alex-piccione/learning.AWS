@@ -84,9 +84,10 @@ jobs:
     - name: Serverless Portfolio
       uses: serverless/github-action@master
       with:
-        args: deploy --config ./src/Serverless/portfolio.yml \
-              --stage ${AWS_STAGE} \
-              --region ${AWS_REGION}
+        args: |
+            deploy --config ./src/Serverless/portfolio.yml
+            --stage ${AWS_STAGE} /
+            --region ${AWS_REGION}
         # --stage production --region eu-central-1
 
 
