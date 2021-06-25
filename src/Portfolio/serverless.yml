@@ -2,6 +2,8 @@
 
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
+provider: aws
+
 #package:
 #  individually: true
 
