@@ -64,13 +64,9 @@ jobs:
         #  --layer-name layer-1 \
         #  --content "S3Bucket=${S3_BUCKET},S3Key=${ZIP_FILE}" \
 
+        # function must exists
         aws lambda update-function-code \
           --function-name learning_getRandomNumber \
-          --s3-bucket ${S3_BUCKET} \
-          --s3-key ${ZIP_FILE}
-
-        aws lambda update-function-code \
-          --function-name learning_portfolio_fund_POST \
           --s3-bucket ${S3_BUCKET} \
           --s3-key ${ZIP_FILE}
 
