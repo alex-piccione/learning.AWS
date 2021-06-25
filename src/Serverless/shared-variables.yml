@@ -5,4 +5,5 @@
 
 zipFile: "src/publish/lambda.zip"
 deploymentBucket:
-  name: "#(deploymentBucket.name)"
+  name: learning-portfolio-functions
+  # "#(deploymentBucket.name)"

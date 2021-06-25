@@ -83,18 +83,10 @@ jobs:
         echo api id=$api_id
         #aws apigateway get-resources --rest-api-id $API
 
-    - name: Test variables
-      run: |
-        echo "AWS_STAGE=${AWS_STAGE}"
-        echo "AWS_REGION=${AWS_REGION}"
-
     - name: Serverless Portfolio
       uses: serverless/github-action@master
       with:
-        args: deploy --config ./src/Serverless/portfolio.yml --stage test --region eu-central-1
-          #--stage ${AWS_STAGE}
-          #--region ${AWS_REGION}
-        # --stage production --region eu-central-1
+        args: deploy --config ./src/Serverless/portfolio.yml --stage ${AWS_STAGE} --region ${AWS_REGION}
 
 
 #    - name: Serverless deploy
