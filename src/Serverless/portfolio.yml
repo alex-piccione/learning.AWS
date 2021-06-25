@@ -18,8 +18,8 @@ package:
 functions:
   portfolio: # any name
     handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
-    #package:
-    #  artifact: ${file(shared-variables.yml):zipFile}
+    package:
+      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     #warmup: true
     #alarms:
     #   - functionErrors
