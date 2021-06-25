@@ -1,4 +1,4 @@
-﻿service: Portfolio Serverless
+﻿service: PortfolioServerless
 
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
@@ -15,7 +15,7 @@ functions:
   portfolio: # any name
     handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     package:
-      artifact: ./publish/lambda.zip
+      artifact: ../../../publish/lambda.zip
     #warmup: true
     #alarms:
     #   - functionErrors
