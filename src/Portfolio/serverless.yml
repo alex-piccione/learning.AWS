@@ -23,8 +23,8 @@ functions:
     events:
       # - http: GET fund
       - http: 
-        path: fund
-        methid: post
+          path: fund
+          methid: post
         # cors: true
         #authorizer:
         #  type: "COGNITO_USER_POOLS"
