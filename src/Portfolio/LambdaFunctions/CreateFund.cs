@@ -18,11 +18,13 @@ namespace Learning.Portfolio {
 
             // TODO store using Repository
 
+            var responseBody = $"{fund.Id}";
+
             return new APIGatewayProxyResponse
             {
                 StatusCode = 200,
                 // TODO return Fund serialized as JSON
-                Body = null
+                Body = responseBody
             };
         }
     }
