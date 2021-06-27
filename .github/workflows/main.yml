@@ -43,7 +43,7 @@ jobs:
         dotnet publish Functions/Functions.csproj -c RELEASE -o publish
 
         echo
-        echo "## Unit Tests"
+        echo "## Unit Tests -----------------------------------------------------------------------"
         dotnet test UnitTests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY"
         
         echo

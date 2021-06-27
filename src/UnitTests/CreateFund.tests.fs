@@ -30,6 +30,8 @@ type ``CreateFund Function``() =
 
         response.StatusCode |> should equal 201
 
+        let result = Jil.JSON.DeserializeDynamic(response.Body, Jil.Options.CamelCase)
+        result.GetType().GetProperty("name") |> should not' (be null)
 
     [<Test>]
     member test.``CreateFund <when> JSON properties are Uppercase <should> fail with 400``() =

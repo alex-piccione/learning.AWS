@@ -48,17 +48,21 @@ let ``CreateFund`` () =
 
     let data = (
                "name" = $"test-name-{random}",
-               "code" = $"test-code-{random}"
+               "code" = $"123"
                )
+    let json = $@"{{ ""name"": ""name-{random}"", ""code"": ""code-123"" }}"
 
-    
-    let response = $"https://{secrets.url}/learning/portfolio/fund".PostJsonAsync(data).Result
-   
-    response.StatusCode |> should equal 200
+    let response = $"https://{secrets.url}/learning/portfolio/fund".AllowAnyHttpStatus().PostJsonAsync(json).Result
 
     let content = response.GetStringAsync().Result
 
-    content |> should not' (be NullOrEmptyString)
+    if response.StatusCode <> 201 
+    then
+        Assert.Fail(content)
+    else
+        content |> should not' (be NullOrEmptyString)
+
+
 
     // https://2knxndownk.execute-api.eu-central-1.amazonaws.com/test/learning/portfolio/fund
 
