@@ -32,7 +32,7 @@ jobs:
         aws-region: eu-central-1
 
     - name: Buid VS solution
-      run: dotnet build src/Learning.csproj -c RELEASE
+      run: dotnet build src/Learning.sln -c RELEASE
 
     - name: Unit Tests
       run: test src/UnitTests/UnitTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
