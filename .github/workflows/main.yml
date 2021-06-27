@@ -35,7 +35,7 @@ jobs:
       run: dotnet build src/Learning.sln -c RELEASE
 
     - name: Unit Tests
-      run: test src/UnitTests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY"
+      run: dotnet test src/UnitTests/UnitTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
 
     - name: Publish zip
       run: |
