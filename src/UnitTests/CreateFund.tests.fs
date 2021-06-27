@@ -31,8 +31,8 @@ type ``CreateFund Function``() =
         response.StatusCode |> should equal 201
 
         let json = System.Text.Json.JsonDocument.Parse(response.Body)
-        json.RootElement.TryGetProperty("id") |> should be True
-        json.RootElement.TryGetProperty("code") |> should be True
+        json.RootElement.TryGetProperty("id") |> fun (t, _) -> t |> should be True
+        json.RootElement.TryGetProperty("code") |> fun (t, _) -> t |> should be True
 
     [<Test>]
     member test.``CreateFund <when> JSON properties are Uppercase <should> fail with 400``() =

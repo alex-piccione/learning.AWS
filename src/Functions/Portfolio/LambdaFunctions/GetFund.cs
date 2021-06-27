@@ -17,14 +17,7 @@ namespace Learning.Portfolio {
 
                 var fund = new Fund(id, "Test fund", "TEST");
 
-                return CreateResponse(
-                    HttpStatusCode.Created,
-                    new CreateFundResponse
-                    {
-                        Id = fund.Id,
-                        Code = fund.Code
-                    }
-                );
+                return CreateOkResponse(fund);
             }
             catch (InvalidRequestDataException exc)
             {
