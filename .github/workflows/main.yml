@@ -44,9 +44,10 @@ jobs:
         zip -r functions.zip ./*
 
     - name: Build C# Lambda & upload to S3
+      if: "false" # DISABLED
       env: 
         S3_BUCKET: "learning.functions"
-        ZIP_FILE: "lambda.zip"
+        ZIP_FILE: "functions.zip"
         ZIP_FILE_ARCHIVE: "lambda_${{steps.datetime.outputs.datetime}}.zip"
         API_ID: "***"
       run: |

@@ -3,7 +3,7 @@
 # refer to a variable like
 # aaa: ${file(../<path to>/shared-variables.yml):aaa}
 
-zipFile: "src/publish/lambda.zip"
+zipFile: "src/publish/functions.zip"
 deploymentBucket:
   name: learning-portfolio-functions
   # "#(deploymentBucket.name)"
