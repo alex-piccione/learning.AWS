@@ -24,7 +24,7 @@ namespace Learning.Portfolio {
         => new APIGatewayProxyResponse
         {
             StatusCode = (int)statusCode,
-            Body = data == null ? null : JSON.Serialize(data)
+            Body = data == null ? null : JSON.Serialize(data/*, jsonOptions*/)
         };
 
 
