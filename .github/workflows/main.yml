@@ -44,7 +44,7 @@ jobs:
 
         echo
         echo "## Unit Tests"
-        - dotnet test Tests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY
+        dotnet test Tests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY"
         
         echo
         echo "## Zip"
