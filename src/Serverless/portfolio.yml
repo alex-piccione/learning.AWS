@@ -16,7 +16,7 @@ package:
   individually: true
 
 functions:
-  portfolio: # any name
+  CreateFund: # any name
     handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
     package:
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
@@ -37,7 +37,11 @@ functions:
         #    - ... 
         #  authorizedId:
         #    Fn::ImportValue: "..."
-
+  GetFund:
+    handler: Learning::Learning.Portfolio.GetFund::Handle   # assembly::namespace.class::method
+    package:
+      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
+    events:
       - http:
         path: learning/portfolio/fund
         method: GET
