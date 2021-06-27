@@ -16,7 +16,7 @@
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Learning.csproj" />
+      <ProjectReference Include="..\Functions\Functions.csproj" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Update="FSharp.Core" Version="5.0.2" />

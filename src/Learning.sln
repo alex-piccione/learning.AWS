@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31320.298
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning", "Learning.csproj", "{1C3795F5-73BC-444A-BE82-F346C3A069BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functions", "Functions\Functions.csproj", "{1C3795F5-73BC-444A-BE82-F346C3A069BD}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "UnitTests", "UnitTests\UnitTests.fsproj", "{9D8CAFAE-BCE8-482B-8FC5-EA810F22DB30}"
 EndProject
@@ -20,7 +20,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github actions", "github ac
 		..\.github\workflows\main.yml = ..\.github\workflows\main.yml
 	EndProjectSection
 EndProject
-
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serverless", "Serverless", "{86232F63-4B60-4F44-90AF-51FEE25547CC}"
+	ProjectSection(SolutionItems) = preProject
+		Serverless\portfolio.yml = Serverless\portfolio.yml
+		Serverless\shared-variables.yml = Serverless\shared-variables.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +50,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9A2FBEC5-4927-48D1-B59C-26E88258B8EE} = {3B712B05-D6CF-41B4-8270-192ADD564C4D}
+		{86232F63-4B60-4F44-90AF-51FEE25547CC} = {3B712B05-D6CF-41B4-8270-192ADD564C4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D742D849-D013-490E-BA1D-9B5E6D6445DC}
