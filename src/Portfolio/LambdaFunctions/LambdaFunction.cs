@@ -9,12 +9,18 @@ namespace Learning.Portfolio {
         public abstract APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context);
 
         protected APIGatewayProxyResponse CreateOkResponse<T>(T data) => CreateResponse(HttpStatusCode.OK, data);
+        protected APIGatewayProxyResponse CreateErrorResponse(string message = null) 
+        => new APIGatewayProxyResponse
+        {
+            StatusCode = 500,
+            Body = message
+        };
 
         protected APIGatewayProxyResponse CreateResponse<T>(HttpStatusCode statusCode, T data) 
         => new APIGatewayProxyResponse
         {
             StatusCode = (int)statusCode,
-            Body = JSON.Serialize(data)
+            Body = data == null ? null : JSON.Serialize(data)
         };
 
 

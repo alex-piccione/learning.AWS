@@ -38,7 +38,7 @@ jobs:
         ZIP_FILE_ARCHIVE: "lambda_${{steps.datetime.outputs.datetime}}.zip"
         API_ID: "***"
       run: |
-        echo "## Build"
+        echo "## Build -----------------------------------------------------------------------"
         cd src
         dotnet publish Learning.csproj -c RELEASE -o publish
 
@@ -47,11 +47,12 @@ jobs:
         dotnet test Tests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY"
         
         echo
-        echo "## Zip"
+        echo "## Zip -----------------------------------------------------------------------"
         cd ./publish
         zip -r ${ZIP_FILE} ./*
        
-        echo "## Create backup" 
+        echo
+        echo "## Create backup -----------------------------------------------------------------------" 
         if [[ ! -z "$(aws s3 ls s3://${S3_BUCKET}/${ZIP_FILE})" ]] ; then
           echo "remove previous"
           aws s3 rm s3://${S3_BUCKET}/ --recursive --exclude "${ZIP_FILE}"
@@ -60,11 +61,12 @@ jobs:
           aws s3 rm s3://${S3_BUCKET}/${ZIP_FILE}
         fi
 
-        echo "## Copy new zip file"
+        echo
+        echo "## Copy new zip file -----------------------------------------------------------------------"
         aws s3 cp ./${ZIP_FILE} s3://${S3_BUCKET}
 
         echo
-        echo "## Publish Lambda"
+        echo "## Publish Lambda -----------------------------------------------------------------------"
         # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-version.html
         # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/publish-layer-version.html
 
@@ -81,7 +83,7 @@ jobs:
           --s3-key ${ZIP_FILE}
 
         echo
-        echo "## API Gateway setup"
+        echo "## API Gateway setup -----------------------------------------------------------------------"
         api_name=Learning
         #API=${API_ID}
         apis=$(aws apigateway get-rest-apis --query "items[?name=='Learning']")
@@ -91,7 +93,7 @@ jobs:
         #aws apigateway get-resources --rest-api-id $API
 
         echo
-        echo "## Create bucket for serverless"
+        echo "## Create bucket for serverless ------------------------------------------------------------"
         # forse bucket creation
         #aws s3api create-bucket --acl private --bucket learning-portfolio-functions \
         #  --create-bucket-configuration LocationConstraint=${AWS_REGION}

@@ -9,23 +9,31 @@ namespace Learning.Portfolio {
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            var requestData = GetRequest<CreateFundRequest>(request.Body);
+            try
+            {
+                var requestData = GetRequest<CreateFundRequest>(request.Body);
 
-            var id = Guid.NewGuid().ToString();
-            var name = requestData.Name.Trim();
-            var code = ValidateCode(requestData.Code.Trim());
+                var id = Guid.NewGuid().ToString();
+                var name = requestData.Name.Trim();
+                var code = ValidateCode(requestData.Code.Trim());
 
-            var fund = new Fund(id, name, code);
+                var fund = new Fund(id, name, code);
 
-            // TODO: store using Repository
+                // TODO: store using Repository
 
-            return CreateOkResponse(
-                new CreateFundResponse
-                {
-                    Id = fund.Id,
-                    Code = fund.Code
-                }
-            );
+                return CreateOkResponse(
+                    new CreateFundResponse
+                    {
+                        Id = fund.Id,
+                        Code = fund.Code
+                    }
+                );
+            }
+            catch (Exception exc)
+            {
+                context.Logger.LogLine(exc.ToString());
+                return CreateErrorResponse("Something went wrong");
+            }
         }
 
         private string ValidateCode(string code)
