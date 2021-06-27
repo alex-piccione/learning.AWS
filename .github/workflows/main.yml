@@ -31,6 +31,12 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-central-1
 
+    - name: Buid VS solution
+      run: dotnet build src/Learning.csproj -c RELEASE
+
+    - name: Unit Tests
+      run: test src/UnitTests/UnitTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
+
     - name: Build C# Lambda & upload to S3
       env: 
         S3_BUCKET: "learning.functions"
