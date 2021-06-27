@@ -47,8 +47,8 @@ let ``CreateFund`` () =
     let authorization = calculateAuthorization "post" "learning/portfolio/fund" "" ""
 
     let data = (
-               "FundName" = $"test-name-{random}",
-               "FundCode" = $"test-code-{random}"
+               "name" = $"test-name-{random}",
+               "code" = $"test-code-{random}"
                )
 
     

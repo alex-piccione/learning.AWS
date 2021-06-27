@@ -6,6 +6,9 @@ using Jil;
 
 namespace Learning.Portfolio {
     abstract class LambdaFunction {
+
+        private static Options jsonOptions = Options.ISO8601CamelCase;
+
         public abstract APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context);
 
         protected APIGatewayProxyResponse CreateOkResponse<T>(T data) => CreateResponse(HttpStatusCode.OK, data);
@@ -28,7 +31,7 @@ namespace Learning.Portfolio {
         {
             try
             {
-                return JSON.Deserialize<T>(requestBody);
+                return JSON.Deserialize<T>(requestBody, jsonOptions);
             }
             catch (Exception exc)
             {
