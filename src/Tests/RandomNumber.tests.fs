@@ -1,4 +1,4 @@
-﻿module Learning.Tests
+﻿module UnitTests.RandomNumber
 
 open Amazon.Lambda.APIGatewayEvents
 open Amazon.Lambda.Core

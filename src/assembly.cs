@@ -1,4 +1,5 @@
 ﻿using Amazon.Lambda.Core;
+using System.Runtime.CompilerServices;
 //using Amazon.Lambda.Serialization.SystemTextJson;
 
 // ref: https://dzone.com/articles/under-the-hood-of-net-core-lambda-request
@@ -10,3 +11,4 @@
 
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+[assembly: InternalsVisibleTo("Learning.UnitTests")]

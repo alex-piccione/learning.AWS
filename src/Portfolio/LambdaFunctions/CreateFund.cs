@@ -26,7 +26,6 @@ namespace Learning.Portfolio {
                     Code = fund.Code
                 }
             );
-            
         }
 
         private string ValidateCode(string code)

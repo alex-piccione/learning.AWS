@@ -26,7 +26,7 @@ namespace Learning.Portfolio {
             }
             catch (Exception exc)
             {
-                throw new Exception($"Failed to deserialize request body to {typeof(T)}", exc);
+                throw new Exception($@"Failed to deserialize request body to ""{typeof(T)}"". JSON:\n {requestBody}", exc);
             }
         }
     }
