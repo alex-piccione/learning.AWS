@@ -4,10 +4,10 @@ using Amazon.Lambda.Core;
 
 namespace Learning.Portfolio {
     class CreateFund {
-        public APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
+        public CreateFundResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
             var id = Guid.NewGuid().ToString();
-            var name = "Fund TEet";
+            var name = "Fund Test";
             var code = "TEST";
 
             //request.Body
@@ -20,11 +20,16 @@ namespace Learning.Portfolio {
 
             var responseBody = $"{fund.Id}";
 
-            return new APIGatewayProxyResponse
+            //new Amazon.Lambda.Serialization.Json.JsonSerializer().Serialize()
+
+            return new CreateFundResponse
             {
                 StatusCode = 200,
                 // TODO return Fund serialized as JSON
-                Body = responseBody
+                Body = responseBody,
+                
+                FundId = fund.Id,
+                FundCode = fund.Code
             };
         }
     }

@@ -56,6 +56,10 @@ let ``CreateFund`` () =
    
     response.StatusCode |> should equal 200
 
+    let content = response.GetStringAsync().Result
+
+    content |> should not' (be NullOrEmptyString)
+
     // https://2knxndownk.execute-api.eu-central-1.amazonaws.com/test/learning/portfolio/fund
 
     // secrets.accessKey, secrets.secretKey

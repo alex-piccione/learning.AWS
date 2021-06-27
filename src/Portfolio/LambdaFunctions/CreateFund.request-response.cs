@@ -12,5 +12,6 @@ namespace Learning.Portfolio
     {
         public string FundId { get; set; }
         public string FundCode { get; set; }
+
     }
 }
