@@ -38,6 +38,10 @@ functions:
         #  authorizedId:
         #    Fn::ImportValue: "..."
 
+      - http:
+        path: learning/portfolio/fund
+        method: GET
+
 
     #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
     #<file src="Services\ClientDataCollection.Lambda\bin\Release\netcoreapp3.1\clientdatacollectiondomain-deploy-package.zip" target="functions" />

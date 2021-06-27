@@ -3,7 +3,6 @@
 open NUnit.Framework
 open Foq
 open FsUnit
-open Jil
 open Amazon.Lambda.APIGatewayEvents
 open Amazon.Lambda.Core
 open Learning.Portfolio
@@ -31,13 +30,9 @@ type ``CreateFund Function``() =
 
         response.StatusCode |> should equal 201
 
-        response.Body |> should contain "\"id\""
-        response.Body |> should contain "\"code\""
-
-        
-        //let result = JSON.Deserialize(response.Body, Jil.Options.CamelCase)
-        //result.id |> should not' (be null)
-        //result.code |> should not' (be null)
+        let json = System.Text.Json.JsonDocument.Parse(response.Body)
+        json.RootElement.TryGetProperty("id") |> should be True
+        json.RootElement.TryGetProperty("code") |> should be True
 
     [<Test>]
     member test.``CreateFund <when> JSON properties are Uppercase <should> fail with 400``() =
