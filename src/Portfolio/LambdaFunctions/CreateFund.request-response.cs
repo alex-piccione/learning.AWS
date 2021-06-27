@@ -1,6 +1,4 @@
-﻿using Amazon.Lambda.APIGatewayEvents;
-
-namespace Learning.Portfolio
+﻿namespace Learning.Portfolio
 {
     public class CreateFundRequest
     {
@@ -8,10 +6,9 @@ namespace Learning.Portfolio
         public string FundCode { get; set; }
     }
 
-    public class CreateFundResponse : APIGatewayProxyResponse
+    public class CreateFundResponse
     {
         public string FundId { get; set; }
         public string FundCode { get; set; }
-
     }
 }
