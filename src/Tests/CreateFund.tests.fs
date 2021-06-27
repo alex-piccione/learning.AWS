@@ -21,7 +21,7 @@ let ``CreateFund OK``() =
 
     let response = CreateFund().Handle(request, context)
 
-    response.StatusCode |> should equal 204
+    response.StatusCode |> should equal 201
 
 
 [<Test>]

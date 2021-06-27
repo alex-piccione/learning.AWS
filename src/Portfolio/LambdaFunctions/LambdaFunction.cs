@@ -3,6 +3,7 @@ using System.Net;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using Jil;
+using Learning.Exceptions;
 
 namespace Learning.Portfolio {
     abstract class LambdaFunction {
@@ -35,7 +36,7 @@ namespace Learning.Portfolio {
             }
             catch (Exception exc)
             {
-                throw new Exception($@"Failed to deserialize request body to ""{typeof(T)}"". JSON:\n {requestBody}", exc);
+                throw new DeserializationFailedException<T>(requestBody, exc);
             }
         }
     }

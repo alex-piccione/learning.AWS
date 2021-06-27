@@ -1,6 +1,8 @@
 using System;
+using System.Net;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
+using Jil;
 
 namespace Learning.Portfolio {
     class CreateFund : LambdaFunction {
@@ -21,13 +23,19 @@ namespace Learning.Portfolio {
 
                 // TODO: store using Repository
 
-                return CreateOkResponse(
+                return CreateResponse(
+                    HttpStatusCode.Created,
                     new CreateFundResponse
                     {
                         Id = fund.Id,
                         Code = fund.Code
                     }
                 );
+            }
+            catch (DeserializationException exc)
+            {
+                context.Logger.LogLine(exc.ToString());
+                return CreateResponse(HttpStatusCode.BadRequest, "CAnnot deserialize request body");
             }
             catch (Exception exc)
             {
