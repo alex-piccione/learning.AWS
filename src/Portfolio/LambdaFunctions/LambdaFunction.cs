@@ -16,5 +16,18 @@ namespace Learning.Portfolio {
             StatusCode = (int)statusCode,
             Body = JSON.Serialize(data)
         };
+
+
+        protected T GetRequest<T>(string requestBody)
+        {
+            try
+            {
+                return JSON.Deserialize<T>(requestBody);
+            }
+            catch (Exception exc)
+            {
+                throw new Exception($"Failed to deserialize request body to {typeof(T)}", exc);
+            }
+        }
     }
 }

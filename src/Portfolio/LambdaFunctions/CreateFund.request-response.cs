@@ -2,13 +2,13 @@
 {
     public class CreateFundRequest
     {
-        public string FundName { get; set; }
-        public string FundCode { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
     }
 
     public class CreateFundResponse
     {
-        public string FundId { get; set; }
-        public string FundCode { get; set; }
+        public string Id { get; set; }
+        public string Code { get; set; }
     }
 }
