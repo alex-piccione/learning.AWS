@@ -43,8 +43,8 @@ functions:
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     events:
       - http:
-        path: learning/portfolio/fund
-        method: GET
+          path: learning/portfolio/fund
+          method: GET
 
 
     #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
