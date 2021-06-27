@@ -41,7 +41,12 @@ jobs:
         echo "## Build"
         cd src
         dotnet publish Learning.csproj -c RELEASE -o publish
+
+        echo
+        echo "## Unit Tests"
+        - dotnet test Tests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY
         
+        echo
         echo "## Zip"
         cd ./publish
         zip -r ${ZIP_FILE} ./*
