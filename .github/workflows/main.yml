@@ -35,7 +35,13 @@ jobs:
       run: dotnet build src/Learning.sln -c RELEASE
 
     - name: Unit Tests
-      run: test src/UnitTests/UnitTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
+      run: test src/UnitTests/UnitTests.fsproj -c Release --filter "TestCategory!=SKIP_ON_DEPLOY"
+
+    - name: Publish zip
+      run: |
+        dotnet publish src/Functions/Functions.csproj -c RELEASE -o src/publish
+        cd src/publish
+        zip -r functions.zip ./*
 
     - name: Build C# Lambda & upload to S3
       env: 
