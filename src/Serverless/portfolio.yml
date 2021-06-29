@@ -19,7 +19,7 @@ variables:
 
 functions:
   CreateFund: # any name
-    handler: ${handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
+    handler: ${{handler_prefix}}.CreateFund::Handle   # assembly::namespace.class::method
     package: &package
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     
@@ -44,7 +44,8 @@ functions:
     handler: ${handler_prefix}.GetFund::Handle   # .Class::Method
     <<: *package   
     events:
-      - http: GET learning/portfolio/fund cors
+      - http: GET learning/portfolio/fund 
+        cors: true
   
   GetFund2:
     handler: ${handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
