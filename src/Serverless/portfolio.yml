@@ -1,8 +1,8 @@
-﻿service: LearningPortfolio
+﻿# syntax ref.: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+service: LearningPortfolio
 configValidationMode: error
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
-#provider: aws
 provider:
   name: aws
   runtime: dotnetcore3.1 # nodejs14.x  # explicit to avoid warning
@@ -12,10 +12,12 @@ provider:
   deploymentBucket:
     name: ${file(src/Serverless/shared-variables.yml):deploymentBucket.name}
 
-package:
-  individually: true
 environment:
   handler_prefix: Learning::Learning.Portfolio
+
+package:
+  individually: true
+
 
 functions:
   CreateFund: # any name
