@@ -51,7 +51,7 @@ functions:
       <<: *package   
     events:
       - http: GET learning/portfolio/fund 
-        cors: true
+          cors: true
   
   GetFund2:
     handler: ${handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
