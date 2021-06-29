@@ -20,7 +20,7 @@ provider:
 
 package:
   individually: true
-  
+
 functions:
   CreateFund: # any name
     handler: ${handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
@@ -62,6 +62,15 @@ functions:
           method: GET
           cors: true
 
+  Delete:
+    handler: ${handler_prefix}.DeleteFund::Handle   # assembly::namespace.class::method
+    package: 
+      <<: *package
+    events:
+      - http: 
+          path: learning/portfolio/fund/{id}
+          method: DELETE
+          cors: true
 
     #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
     #<file src="Services\ClientDataCollection.Lambda\bin\Release\netcoreapp3.1\clientdatacollectiondomain-deploy-package.zip" target="functions" />
