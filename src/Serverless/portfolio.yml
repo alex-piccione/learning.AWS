@@ -20,14 +20,12 @@ provider:
 
 package:
   individually: true
-
-
+  
 functions:
   CreateFund: # any name
     handler: ${handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
     package: &package
-      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
-    
+      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}    
     #warmup: true
     #alarms:
     #   - functionErrors
@@ -50,15 +48,19 @@ functions:
     package: 
       <<: *package   
     events:
-      - http: GET learning/portfolio/fund 
-          cors: true
-  
+      - http:
+          path: learning/portfolio/fund 
+          method: GET
+          cors: true  
   GetFund2:
     handler: ${handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
     package: 
       <<: *package
     events:
-      - http: GET learning/portfolio/fund/{id}
+      - http: 
+          path: learning/portfolio/fund/{id}
+          method: GET
+          cors: true
 
 
     #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
