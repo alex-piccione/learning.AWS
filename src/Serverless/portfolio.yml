@@ -16,8 +16,11 @@ package:
   individually: true
 
 functions:
+  env:
+    handler_prefix: Learning::Learning.Portfolio
+
   CreateFund: # any name
-    handler: Learning::Learning.Portfolio.CreateFund::Handle   # assembly::namespace.class::method
+    handler: ${handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
     package:
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     #warmup: true
@@ -29,7 +32,7 @@ functions:
       - http: 
           path: learning/portfolio/fund
           method: POST
-        # cors: true
+          cors: true
         #authorizer:
         #  type: "COGNITO_USER_POOLS"
         #  scopes: 
@@ -38,11 +41,18 @@ functions:
         #  authorizedId:
         #    Fn::ImportValue: "..."
   GetFund:
-    handler: Learning::Learning.Portfolio.GetFund::Handle   # assembly::namespace.class::method
+    handler: ${handler_prefix}.GetFund::Handle   # .Class::Method
     package:
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     events:
-      - http: GET learning/portfolio/fund
+      - http: GET learning/portfolio/fund cors
+  
+  GetFund2:
+    handler: ${handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
+    package:
+      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
+    events:
+      - http: GET learning/portfolio/fund/{id}
 
 
     #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>

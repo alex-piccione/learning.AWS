@@ -4,6 +4,7 @@ Learn AWS Lambda, Api Gateway, Serverless, CD/CI deployment
 ## Courses
 
 - Pluralsight "Fundamental Cloud Concepts for AWS" by David Tucker
+- Pluralsight "Building Scalable APIs with the AWS API Gateway" by Will Button" [STARTED]
 - content.aws.training "Introduction to Serverless Development"
 - amazon.qwiklabs.com
   + Security on AWS
@@ -28,7 +29,6 @@ TO see:
   By default a new role is created with basic permission (Machine Policy, CloudWatch to write log)
 - Create a simple Lambda function with C#
 - Deploy the Lambda within GitHub Action
-
 
 
 
