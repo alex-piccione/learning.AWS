@@ -29,7 +29,7 @@ TO see:
   By default a new role is created with basic permission (Machine Policy, CloudWatch to write log)
 - Create a simple Lambda function with C#
 - Deploy the Lambda within GitHub Action
-
+- Serverless framework
 
 
 ## Portfolio service
@@ -52,3 +52,7 @@ https://www.serverless.com/blog/cors-api-gateway-survival-guide
 ## Utils
 
 ``zip`` command: https://www.cyberciti.biz/faq/how-to-zip-a-folder-in-ubuntu-linux/
+
+
+## Severless
+serverless.yml syntax: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/

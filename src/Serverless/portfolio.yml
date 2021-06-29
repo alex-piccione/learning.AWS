@@ -1,5 +1,5 @@
 ﻿service: LearningPortfolio
-  configValidationMode: "error"
+configValidationMode: error
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
 #provider: aws
@@ -42,14 +42,14 @@ functions:
         #    Fn::ImportValue: "..."
   GetFund:
     handler: ${env:handler_prefix}.GetFund::Handle   # .Class::Method
-    << : *package   
+    <<: *package   
     events:
       - http: GET learning/portfolio/fund 
         cors: true
   
   GetFund2:
     handler: ${env:handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
-    << : *package
+    <<: *package
     events:
       - http: GET learning/portfolio/fund/{id}
 
