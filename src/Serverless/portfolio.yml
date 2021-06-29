@@ -1,7 +1,5 @@
 ﻿# syntax ref.: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
 service: LearningPortfolio
-  environment:
-    handler_prefix: Learning::Learning.Portfolio
 configValidationMode: error
 # https://www.serverless.com/framework/docs/providers/aws/events/apigateway/#example-lambda-proxy-event-default
 
@@ -13,7 +11,8 @@ provider:
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
   deploymentBucket:
     name: ${file(src/Serverless/shared-variables.yml):deploymentBucket.name}
-
+  environment:
+    handler_prefix: Learning::Learning.Portfolio
 
 
 package:
