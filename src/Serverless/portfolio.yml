@@ -38,7 +38,7 @@ functions:
     events:
       # - http: GET fund
       - http: 
-          path: learning/portfolio/fund
+          path: portfolio/fund
           method: POST
           cors: true
         #authorizer:
@@ -55,7 +55,7 @@ functions:
       <<: *package   
     events:
       - http:
-          path: learning/portfolio/fund 
+          path: portfolio/fund 
           method: GET
           cors: true  
 
@@ -65,18 +65,28 @@ functions:
       <<: *package
     events:
       - http: 
-          path: learning/portfolio/fund/{id}
+          path: portfolio/fund/{id}
           method: GET
           cors: true
 
-  Delete:
+  DeleteFund:
     handler: ${handler_prefix}.DeleteFund::Handle   # assembly::namespace.class::method
     package: 
       <<: *package
     events:
       - http: 
-          path: learning/portfolio/fund/{id}
+          path: portfolio/fund/{id}
           method: DELETE
+          cors: true
+
+  UpdateFund:
+    handler: ${handler_prefix}.UpdateFund::Handle   # assembly::namespace.class::method
+    package: 
+      <<: *package
+    events:
+      - http: 
+          path: portfolio/fund/{id}
+          method: PUT
           cors: true
 
     #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
