@@ -47,14 +47,16 @@ functions:
         #    Fn::ImportValue: "..."
   GetFund:
     handler: ${handler_prefix}.GetFund::Handle   # .Class::Method
-    <<: *package   
+    package: 
+      <<: *package   
     events:
       - http: GET learning/portfolio/fund 
         cors: true
   
   GetFund2:
     handler: ${handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
-    <<: *package
+    package: 
+      <<: *package
     events:
       - http: GET learning/portfolio/fund/{id}
 
