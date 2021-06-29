@@ -41,11 +41,13 @@ Role: learning
 Bucket for data: learning.portfolio
 
 
-## Deplot C# Lambda
+## Deploy C# Lambda
 https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html  
 Assume you have the src/myHandler.cs file.  
 ``dotnet lambda``
 
+## CORS
+https://www.serverless.com/blog/cors-api-gateway-survival-guide
 
 ## Utils
 
