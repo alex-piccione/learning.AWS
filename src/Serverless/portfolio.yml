@@ -5,9 +5,9 @@ configValidationMode: error
 
 provider:
   name: aws
-  runtime: dotnetcore3.1 # nodejs14.x  # explicit to avoid warning
-  #stage: test # passed
-  #region: eu-central-1
+  runtime: dotnetcore3.1
+  #stage: test # passed by call
+  #region: eu-central-1 # passed by call
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
   deploymentBucket:
     name: ${file(src/Serverless/shared-variables.yml):deploymentBucket.name}
@@ -48,6 +48,7 @@ functions:
         #    - ... 
         #  authorizedId:
         #    Fn::ImportValue: "..."
+
   GetFund:
     handler: ${handler_prefix}.GetFund::Handle   # .Class::Method
     package: 
@@ -57,6 +58,7 @@ functions:
           path: learning/portfolio/fund 
           method: GET
           cors: true  
+
   GetFund2:
     handler: ${handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
     package: 
