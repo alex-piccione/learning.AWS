@@ -25,16 +25,16 @@ package:
 
 functions:
   CreateFund: # any name
-    handler: ${handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
+    handler: ${{handler_prefix}}.CreateFund::Handle   # assembly::namespace.class::method
     package: &package
-      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}    
+      artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     #warmup: true
     #alarms:
     #   - functionErrors
     #   - functionDuration
     events:
       # - http: GET fund
-      - http: 
+      - http:
           path: portfolio/fund
           method: POST
           cors: true
@@ -47,7 +47,7 @@ functions:
         #    Fn::ImportValue: "..."
 
   ListFund:
-    handler: ${handler_prefix}.GetFund::Handle   # .Class::Method
+    handler: ${{handler_prefix}}.GetFund::Handle   # .Class::Method
     package:
       <<: *package
     events:
