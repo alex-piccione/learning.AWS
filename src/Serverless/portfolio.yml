@@ -9,6 +9,7 @@ provider:
   #stage: test # passed by call
   #region: eu-central-1 # passed by call
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
+  variablesResolutionMode: 20210326 # required to adopt the new varianle resolution syntax (v 3.0)
   deploymentBucket:
     name: ${file(src/Serverless/shared-variables.yml):deploymentBucket.name}
 
