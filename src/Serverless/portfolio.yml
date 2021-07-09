@@ -11,8 +11,6 @@ provider:
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
   deploymentBucket:
     name: ${file(src/Serverless/shared-variables.yml):deploymentBucket.name}
-  environment:
-    handler_prefix: "Learning::Learning.Portfolio"
 
   #endpointType: regional # Optional endpoint configuration for API Gateway REST API. Default is Edge.
     #apiGateway: # Optional API Gateway global config
@@ -24,10 +22,10 @@ package:
   individually: true
 
 functions:
-  environment:
-    handler_prefix: "Learning::Learning.Portfolio"
 
   CreateFund: # any name
+    environment:
+      handler_prefix: "Learning::Learning.Portfolio"
     handler: ${env:handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
     package: &package
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
@@ -50,7 +48,7 @@ functions:
         #    Fn::ImportValue: "..."
 
   ListFund:
-    handler: "${env:handler_prefix}.GetFund::Handle"
+    handler: ${handler_prefix}.GetFund::Handle
     package:
       <<: *package
     events:
@@ -60,7 +58,7 @@ functions:
           cors: true
 
   GetFund:
-    handler: "${env:handler_prefix}.GetFund::Handle"
+    handler: ${handler_prefix}.GetFund::Handle
     package: 
       <<: *package
     events:
@@ -70,7 +68,7 @@ functions:
           cors: true
 
   DeleteFund:
-    handler: ${env:handler_prefix}.DeleteFund::Handle
+    handler: ${handler_prefix}.DeleteFund::Handle
     package:
       <<: *package
     events:
@@ -89,5 +87,3 @@ functions:
           method: PUT
           cors: true
 
-    #<file src="client-data-collection\serverless.yml" target="functions\client-data-collection"/>
-    #<file src="Services\ClientDataCollection.Lambda\bin\Release\netcoreapp3.1\clientdatacollectiondomain-deploy-package.zip" target="functions" />
