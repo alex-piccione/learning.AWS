@@ -52,7 +52,7 @@ namespace Learning.Portfolio {
             catch (Exception exc)
             {
                 context.Logger.LogLine(exc.ToString());
-                return CreateErrorResponse($"Something went wrong. {exc.Message}");
+                return CreateErrorResponse(exc.Message);
             }
         }
 

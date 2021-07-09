@@ -5,25 +5,28 @@ using Amazon.Lambda.Core;
 using Learning.Exceptions;
 
 namespace Learning.Portfolio {
-    class GetFund : LambdaFunction {
+    class ListFund : LambdaFunction {
+
+
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
             try
             {
-                var id = request.GetIdFromQueryString();
-
                 // TODO: retrieve from Repository
 
-                var fund = new Fund(id, "Test fund", "TEST");
+                var funds = new[] {
+                    new Fund("test 01", "Test fund", "TEST"),
+                    new Fund("test 02", "Test fund", "TEST"),
+                    };
 
-                return CreateOkResponse(fund);
+                return CreateOkResponse(funds);
             }
-            catch (InvalidRequestDataException exc)
+            /*catch (InvalidRequestDataException exc)
             {
                 context.Logger.LogLine(exc.ToString());
                 return CreateResponse(HttpStatusCode.BadRequest, exc.Message) ;
-            }
+            }*/
             catch (Exception exc)
             {
                 context.Logger.LogLine(exc.ToString());
