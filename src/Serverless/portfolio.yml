@@ -20,11 +20,6 @@ provider:
 
   apiName: LearningPortfolio # Use a custom name for the API Gateway API
 
-  #httpApi:
-  #  name: LearningPortfolio # default is {stage}-{service}  does not work
-  #  #cors: true
-  #  #authorizers:
-
 package:
   individually: true
 
@@ -51,7 +46,7 @@ functions:
         #  authorizedId:
         #    Fn::ImportValue: "..."
 
-  GetFund:
+  ListFund:
     handler: ${handler_prefix}.GetFund::Handle   # .Class::Method
     package:
       <<: *package
