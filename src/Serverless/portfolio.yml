@@ -28,7 +28,7 @@ package:
 functions:
 
   CreateFund: # any name
-    handler: ${self:provider.environment:handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
+    handler: ${self:provider.environment.handler_prefix}.CreateFund::Handle   # assembly::namespace.class::method
     package: &package
       artifact: ${file(src/Serverless/shared-variables.yml):zipFile}
     #warmup: true
