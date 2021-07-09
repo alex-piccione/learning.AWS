@@ -50,7 +50,7 @@ functions:
         #    Fn::ImportValue: "..."
 
   ListFund:
-    handler: ${handler_prefix}.GetFund::Handle
+    handler: ${self:provider.environment.handler_prefix}.GetFund::Handle
     package:
       <<: *package
     events:
@@ -60,7 +60,7 @@ functions:
           cors: true
 
   GetFund:
-    handler: ${handler_prefix}.GetFund::Handle
+    handler: ${self:provider.environment.handler_prefix}.GetFund::Handle
     package: 
       <<: *package
     events:
@@ -70,7 +70,7 @@ functions:
           cors: true
 
   DeleteFund:
-    handler: ${handler_prefix}.DeleteFund::Handle
+    handler: ${self:provider.environment.handler_prefix}.DeleteFund::Handle
     package:
       <<: *package
     events:
@@ -80,7 +80,7 @@ functions:
           cors: true
 
   UpdateFund:
-    handler: ${handler_prefix}.UpdateFund::Handle
+    handler: ${self:provider.environment.handler_prefix}.UpdateFund::Handle
     package:
       <<: *package
     events:
