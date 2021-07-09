@@ -11,7 +11,7 @@ provider:
   lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
   deploymentBucket:
     name: ${file(src/Serverless/shared-variables.yml):deploymentBucket.name}
-  environment:
+  env:
     handler_prefix: "Learning::Learning.Portfolio"
 
   #endpointType: regional # Optional endpoint configuration for API Gateway REST API. Default is Edge.
@@ -57,7 +57,7 @@ functions:
           cors: true
 
   GetFund:
-    handler: ${env.handler_prefix}.GetFund::Handle   # assembly::namespace.class::method
+    handler: "${env.handler_prefix}.GetFund::Handle"   # assembly::namespace.class::method
     package: 
       <<: *package
     events:
@@ -67,7 +67,7 @@ functions:
           cors: true
 
   DeleteFund:
-    handler: ${handler_prefix}.DeleteFund::Handle   # assembly::namespace.class::method
+    handler: ${env.handler_prefix}.DeleteFund::Handle   # assembly::namespace.class::method
     package:
       <<: *package
     events:
