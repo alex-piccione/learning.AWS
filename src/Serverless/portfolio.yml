@@ -47,7 +47,7 @@ functions:
         #    Fn::ImportValue: "..."
 
   ListFund:
-    handler: ${{handler_prefix}}.GetFund::Handle   # .Class::Method
+    handler: "${{handler_prefix}}.GetFund::Handle   # .Class::Method
     package:
       <<: *package
     events:

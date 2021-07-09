@@ -54,6 +54,9 @@ https://www.serverless.com/blog/cors-api-gateway-survival-guide
 
 ``zip`` command: https://www.cyberciti.biz/faq/how-to-zip-a-folder-in-ubuntu-linux/
 
+## GitHub Actions
+variables: https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions
+
 
 ## Severless
 serverless.yml syntax: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
