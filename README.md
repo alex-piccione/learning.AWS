@@ -30,6 +30,7 @@ TO see:
 - Create a simple Lambda function with C#
 - Deploy the Lambda within GitHub Action
 - Serverless framework
+  How to set a custome name for the API Gaateway? (default is {stage}-{service name})
 
 
 ## Portfolio service
