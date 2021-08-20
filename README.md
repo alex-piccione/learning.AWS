@@ -35,7 +35,11 @@ TO see:
 
 ## Portfolio service
 
-Deploy status: [![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
+### API
+[![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
+
+![image](https://user-images.githubusercontent.com/876490/130262878-d7d3383a-1592-4645-80fd-d88b0741865c.png)
+
 
 Region: eu-central-1 (Frankfurt)
 Role: learning
