@@ -1,0 +1,73 @@
+# syntax ref.: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+service: my-service
+configValidationMode: error
+
+provider:
+  name: aws
+  runtime: dotnetcore3.1
+  lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
+  variablesResolutionMode: 20210326 # required to adopt the new varianle resolution syntax (v3.0)
+
+  environment:
+    handler_prefix: "MyAssembly::MyProject.Suff" # Assembly::Namespace prefix, contatenate .Class::Method
+
+functions:
+  #environments here?
+
+  DoSomething: # any name
+    handler: ${self:provider.environment:handler_prefix}.DoSomething::Handle   # assembly::namespace.class::method
+
+
+
+
+I have a GitHub Actions yaml file that in a Job is doing this:
+```yaml
+    - name: Serverless Stuff
+      uses: serverless/github-action@master
+      with:
+        args: deploy --config ./src/Serverless/stuff.yml
+```
+In stuff.yml:
+```yaml
+service: my-service
+configValidationMode: error
+
+provider:
+  name: aws
+  runtime: dotnetcore3.1
+  lambdaHashingVersion: "20201221" # optimize resolution of lambda function (and avoid warning)
+  variablesResolutionMode: 20210326 # required to adopt the new variable resolution syntax (v3.0)
+
+  environment:
+    handler_prefix: "MyAssembly::MyProject.Suff" # Assembly::Namespace prefix, contatenate .Class::Method
+
+functions:
+  #environments here?
+
+  DoSomething: # any name
+    handler: ${self:provider.environment:handler_prefix}.DoSomething::Handle   # assembly::namespace.class::method
+```
+
+I tried any possible syntax: "env." "env:", "self:env", "environment" ... 
+and also to put "environment" inside "functions".  
+**The _handler_prefix_ variable is never resolved.**  
+
+The documentation does not really help. For example here:
+https://www.serverless.com/framework/docs/providers/aws/guide/variables/
+```yaml
+provider:
+  name: aws
+  environment:
+    MY_SECRET: ${file(../config.${opt:stage, 'dev'}.json):CREDS}
+```
+
+but then... does not show how to access _MY_SECRET_.  
+Other documentation pages just explain that you can use the hierarchy/path but still not a clear example of a simple scenario like mine.
+So, I found [this](https://stackoverflow.com/questions/62771363/serverless-yml-reference-existing-environment-variable-in-another), and I ended up with the current code, but this is the error again:  
+
+**ERROR in GitHub Action**:
+> Variables resolver reports following resolution errors:
+  > Variable syntax error at "functions.DoSomething.handler": Invalid variable address at index 2 in "${self:provider.environment:handler_prefix}.DoSomething::Handle"
+From a next major this will be communicated with a thrown error.
+Set "variablesResolutionMode: 20210326" in your service config, to adapt to new behavior now
+More Info: https://www.serverless.com/framework/docs/deprecations/#NEW_VARIABLES_RESOLVER

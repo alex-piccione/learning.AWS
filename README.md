@@ -25,12 +25,12 @@ TO see:
   Monthly budget (repeated) with max 10 GBP
 - AWS Regions, Avalilability Zones and Edge Locations (Amazon Cloudfront) ([here](docs/aws-global-infrastructure.md))  
 - Create a shared role for Lambda functions
-- Create a Lambda function (with Python 3.8)
+- Create a Lambda function (with Python 3.8)  
   By default a new role is created with basic permission (Machine Policy, CloudWatch to write log)
 - Create a simple Lambda function with C#
 - Deploy the Lambda within GitHub Action
-- Serverless framework
-  How to set a custome name for the API Gaateway? (default is {stage}-{service name})
+- Serverless framework  
+  Customized name for the API Gateway (default is {stage}-{service name})
 
 
 ## Portfolio service
