@@ -14,19 +14,12 @@ namespace Learning.Portfolio {
         {
             try
             {
-                var requestData = GetRequest<CreateFundRequest>(request.Body);
+                var requestData = NormalizeRequest(GetRequest<CreateFundRequest>(request.Body));
 
                 ValidateRequest(requestData);
-                // TODO: normalize strings
 
                 var id = Guid.NewGuid().ToString();
-                var name = requestData.Name?.Trim();
-
-
-
-                var code = ValidateCode(requestData.Code?.Trim());
-
-                var fund = new Fund(id, name, code);
+                var fund = new Fund(id, requestData.Name, requestData.Code);
 
                 // TODO: store using Repository
 
@@ -35,6 +28,7 @@ namespace Learning.Portfolio {
                     new CreateFundResponse
                     {
                         Id = fund.Id,
+                        Name = fund.Name,
                         Code = fund.Code
                     }
                 );
@@ -56,6 +50,14 @@ namespace Learning.Portfolio {
             }
         }
 
+        /// Trim all the string properties and set the code uppercase
+        private CreateFundRequest NormalizeRequest(CreateFundRequest request)
+        {
+            request.Code = request.Code?.Trim().ToUpperInvariant();
+            request.Name = request.Name?.Trim();
+            return request;
+        }
+
         private void ValidateRequest(CreateFundRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.Name))
@@ -63,6 +65,8 @@ namespace Learning.Portfolio {
 
             if (string.IsNullOrWhiteSpace(request.Code))
                 throw new InvalidRequestDataException("Code", "must not be empty");
+            else if (request.Code.Length > CODE_MAX_LENGTH)
+                throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
         }
 
         private string ValidateCode(string code)
