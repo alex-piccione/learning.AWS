@@ -43,7 +43,7 @@ Bucket for data: learning.portfolio
 
 
 ## Postman
-Postman calls examples here: [README.Postman]('docs/README Postman.md')
+Postman calls examples here: [README.Postman](docs/README%20Postman.md)
 
 ---
 # Developer resources & references
