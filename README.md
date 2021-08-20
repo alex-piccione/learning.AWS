@@ -6,7 +6,7 @@ Learn AWS Lambda, Api Gateway, Serverless, CD/CI deployment
 - Pluralsight "Fundamental Cloud Concepts for AWS" by David Tucker
 - Pluralsight "Building Scalable APIs with the AWS API Gateway" by Will Button" [STARTED]
 - content.aws.training "Introduction to Serverless Development"
-- amazon.qwiklabs.com
+- amazon.qwiklabs.com  
   + Security on AWS
 
 https://amazon.qwiklabs.com/quests/22?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Afalse%7D
@@ -35,12 +35,18 @@ TO see:
 
 ## Portfolio service
 
-[![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
+Deploy status: [![Portfolio deploy master](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml/badge.svg)](https://github.com/alex-piccione/learning.AWS/actions/workflows/main.yml)
 
 Region: eu-central-1 (Frankfurt)
 Role: learning
 Bucket for data: learning.portfolio
 
+
+## Postman
+Postman calls examples here: [README.Postman.md]
+
+---
+# Developer resources & references
 
 ## Deploy C# Lambda
 https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html  
