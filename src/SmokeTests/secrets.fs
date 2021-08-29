@@ -12,7 +12,7 @@ let configuration =
 let loadSecrets path env =
     match configuration.[path] with
     | null -> 
-        match Environment.GetEnvironmentVariable(env, EnvironmentVariableTarget.Machine) with 
+        match Environment.GetEnvironmentVariable(env) with 
         | null -> failwith $"""Secret with path "{path}" and Environment variable "{env}" are null."""
         | value ->  value
     | value ->  value
