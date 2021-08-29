@@ -7,6 +7,11 @@ let configuration =
         .AddUserSecrets("learning.026d69da-e3fc-4abe-a3f4-068da978c308")
         .Build()
 
-let url =    configuration.["AWS:url"] 
-let accessKey = configuration.["AWS:access key"]
-let secretKey = configuration.["AWS:secret key"]
+let loadSecrets path =
+    match configuration.[path] with
+    | "" -> failwith $"Secret with path {path} is empty"
+    | value ->  value
+
+let url =       loadSecrets "AWS:url"
+let accessKey = loadSecrets "AWS:access key"
+let secretKey = loadSecrets "AWS:secret key"
