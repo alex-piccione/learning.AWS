@@ -12,7 +12,7 @@ open AWSRequestSignerFlurl
 let ``CreateFund`` () =
 
 
-    let random = Random(System.DateTime.Now.Millisecond).Next()
+    let random = Random(System.DateTime.Now.Millisecond).Next(1, 999)
     let json = $@"{{ ""name"": ""name-{random}"", ""code"": ""test-{random}"" }}"
 
     let response = 

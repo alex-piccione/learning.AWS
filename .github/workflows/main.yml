@@ -39,9 +39,9 @@ jobs:
 
     - name: Smoke Tests
       run: |
-        SET URL=${{ secrets.URL }}
-        SET KEY=${{ secrets.ACCESS_KEY }}
-        SET SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
+        $env:URL=${{ secrets.URL }}
+        $env:KEY=${{ secrets.ACCESS_KEY }}
+        $env:SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
         dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
 
     - name: Publish zip
