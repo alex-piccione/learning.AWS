@@ -44,6 +44,8 @@ jobs:
         export KEY=${{ secrets.AWS_ACCESS_KEY }}
         export SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
         dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
+        unset KEY
+        unset SECRET
 
     - name: Publish zip
       run: |
