@@ -39,7 +39,8 @@ jobs:
 
     - name: Smoke Tests
       run: |
-        URL=${{ secrets.AWS_URL }}
+        echo URL=${{ secrets.AWS_URL }}
+        export URL=${{ secrets.AWS_URL }}
         KEY=${{ secrets.AWS_ACCESS_KEY }}
         SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
         dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
