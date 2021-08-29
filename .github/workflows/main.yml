@@ -39,9 +39,9 @@ jobs:
 
     - name: Smoke Tests
       run: |
-        [System.Environment]::SetEnvironmentVariable('URL','${{ secrets.URL }}')
-        $env:KEY = "${{ secrets.ACCESS_KEY }}"
-        $env:SECRET = "${{ secrets.AWS_ACCESS_KEY_SECRET }}"
+        URL=${{ secrets.URL }}
+        KEY=${{ secrets.ACCESS_KEY }}
+        SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
         dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
 
     - name: Publish zip
