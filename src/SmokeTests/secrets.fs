@@ -1,6 +1,7 @@
 ﻿module secrets
 
 open Microsoft.Extensions.Configuration
+open System
 
 
 let configuration =
@@ -8,11 +9,14 @@ let configuration =
         .AddUserSecrets("learning.026d69da-e3fc-4abe-a3f4-068da978c308")
         .Build()
 
-let loadSecrets path =
+let loadSecrets path env =
     match configuration.[path] with
-    | null -> failwith $"""Secret with path "{path}" is null."""
+    | null -> 
+        match Environment.GetEnvironmentVariable(env) with 
+        | null -> failwith $"""Secret with path "{path}" and Environment variable "{env}" are null."""
+        | value ->  value
     | value ->  value
 
-let url =       loadSecrets "AWS:url aaa"
-let accessKey = loadSecrets "AWS:access key"
-let secretKey = loadSecrets "AWS:secret key"
+let url =       loadSecrets "AWS:url" "URL"
+let accessKey = loadSecrets "AWS:access key" "KEY"
+let secretKey = loadSecrets "AWS:secret key" "SECRET"
