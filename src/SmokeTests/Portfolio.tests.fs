@@ -11,8 +11,9 @@ open AWSRequestSignerFlurl
 [<Test>]
 let ``CreateFund`` () =
 
+
     let random = Random(System.DateTime.Now.Millisecond).Next()
-    let json = $@"{{ ""name"": ""name-{random}"", ""code"": ""code-123"" }}"
+    let json = $@"{{ ""name"": ""name-{random}"", ""code"": ""test-{random}"" }}"
 
     let response = 
         $"https://{secrets.url}/portfolio/fund"

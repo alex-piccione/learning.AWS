@@ -37,6 +37,9 @@ jobs:
     - name: Unit Tests
       run: dotnet test src/UnitTests/UnitTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
 
+    - name: Smoke Tests
+      run: dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
+
     - name: Publish zip
       run: |
         dotnet publish src/Functions/Functions.csproj -c RELEASE -o src/publish
