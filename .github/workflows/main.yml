@@ -39,7 +39,6 @@ jobs:
 
     - name: Smoke Tests
       run: |
-        #URL=valu is not seen
         export URL=${{ secrets.AWS_URL }}
         export KEY=${{ secrets.AWS_ACCESS_KEY }}
         export SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
