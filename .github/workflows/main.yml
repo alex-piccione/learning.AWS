@@ -42,6 +42,7 @@ jobs:
         export URL=${{ secrets.AWS_URL }}
         export KEY=${{ secrets.AWS_ACCESS_KEY }}
         export SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
+        export MONGODB_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTION_STRING }}
         dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
         unset KEY
         unset SECRET
