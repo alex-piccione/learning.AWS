@@ -31,6 +31,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-central-1
 
+    #substitute production appsettings entries to appsettings json file
+    - name: Substitute configuration variables
+      uses: micrisoft/variable-substitution@v1
+      with:
+        files: "src/Functions/configuration.json"
+      env:
+        MongoDB_connection_string: ${{secrets.MONGODB_CONNECTION_STRING}}
+
+
     - name: Buid VS solution
       run: dotnet build src/Learning.sln -c RELEASE
 
@@ -122,6 +131,12 @@ jobs:
       with:
         args: deploy --config ./src/Serverless/portfolio.yml --stage ${{env.AWS_STAGE}} --region ${{env.AWS_REGION}}
 
+  SmokeTests:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+    environment: production
+    if: "false" # DISABLED
+    steps:
     - name: Smoke Tests
       run: |
         export URL=${{ secrets.AWS_URL }}
