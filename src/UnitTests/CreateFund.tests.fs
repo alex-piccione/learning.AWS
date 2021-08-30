@@ -85,7 +85,27 @@ type ``CreateFund Function``() =
         }}"
         let requestBody = { name = name; code = "code"}.ToJson()
 
-        let existingFund = [|Fund("", name, "OLD")|] :> ICollection<Fund>
+        let existingFund = [|Fund("", name.ToLower(), "different code")|] :> ICollection<Fund>
+        let repository = Mock<IFundRepository>()
+                            .Setup( fun rep -> <@ rep.List() @>).Returns(existingFund)
+                            .Create()
+
+        let request = APIGatewayProxyRequest()
+
+        request.Body <- requestBody
+
+        let response = CreateFund(repository).Handle(request, context)
+
+        response.StatusCode |> should equal 400
+        response.Body |> should contain "already exists"
+
+    [<Test>]
+    member test.``CreateFund <when> Code is duplicated <should> fail with 400``() =
+
+        let code = "TEST"
+        let requestBody = { name = "name"; code = code}.ToJson()
+
+        let existingFund = [|Fund("", "different name", code.ToLower())|] :> ICollection<Fund>
         let repository = Mock<IFundRepository>()
                             .Setup( fun rep -> <@ rep.List() @>).Returns(existingFund)
                             .Create()

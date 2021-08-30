@@ -2,25 +2,20 @@ using System;
 using System.Net;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Learning.Exceptions;
 
 namespace Learning.Portfolio {
-    class ListFund : LambdaFunction {
+    class ListFund : FundLambdaFunctionBase {
 
+        public ListFund() { }
 
+        public ListFund(IFundRepository repository) : base(repository) { }
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
             try
             {
-                // TODO: retrieve from Repository
-
-                var funds = new[] {
-                    new Fund("test 01", "Test fund", "TEST"),
-                    new Fund("test 02", "Test fund", "TEST"),
-                    };
-
-                return CreateOkResponse(funds);
+                var list = repository.List();
+                return CreateOkResponse(list);
             }
             /*catch (InvalidRequestDataException exc)
             {

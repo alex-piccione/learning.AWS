@@ -20,12 +20,18 @@ namespace Learning.Portfolio {
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(request.Body))
+                    return CreateResponse(HttpStatusCode.BadRequest, "Request body cannot be empty.");
+
                 var requestData = NormalizeRequest(GetRequest<CreateFundRequest>(request.Body));
 
                 ValidateRequest(requestData);
 
-                if (repository.List()?.FirstOrDefault(f => f.Name.ToLowerInvariant() == requestData.Name.ToLowerInvariant()) != null)
+                var list = repository.List();
+                if (list?.FirstOrDefault(f => IsSameName(f.Name, requestData.Name) ) != null)
                     return CreateResponse(HttpStatusCode.BadRequest, "A Fund with the same name already exists.");
+                if (list?.FirstOrDefault(f => IsSameCode(f.Code, requestData.Code)) != null)
+                    return CreateResponse(HttpStatusCode.BadRequest, "A Fund with the same code already exists.");
 
                 var id = Guid.NewGuid().ToString();
                 var fund = new Fund(id, requestData.Name, requestData.Code);
@@ -77,5 +83,8 @@ namespace Learning.Portfolio {
             else if (request.Code.Length > CODE_MAX_LENGTH)
                 throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
         }
+
+        private bool IsSameName(string a, string b) => a.ToLowerInvariant() == b.ToLowerInvariant();
+        private bool IsSameCode(string a, string b) => a.ToLowerInvariant() == b.ToLowerInvariant();
     }
 }

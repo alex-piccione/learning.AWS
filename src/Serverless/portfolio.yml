@@ -50,7 +50,7 @@ functions:
         #    Fn::ImportValue: "..."
 
   ListFund:
-    handler: ${self:provider.environment.handler_prefix}.GetFund::Handle
+    handler: ${self:provider.environment.handler_prefix}.ListFund::Handle
     package:
       <<: *package
     events:
