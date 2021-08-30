@@ -22,14 +22,18 @@ namespace Learning.Portfolio {
 
             try
             {
+                context.Logger.LogLine("Request deserialization START");
                 var requestData = NormalizeRequest(GetRequest<CreateFundRequest>(request.Body));
+                context.Logger.LogLine("Request deserialization END");
 
                 ValidateRequest(requestData);
 
                 var id = Guid.NewGuid().ToString();
                 var fund = new Fund(id, requestData.Name, requestData.Code);
 
+                context.Logger.LogLine("Repository save START");
                 repository.Create(fund);
+                context.Logger.LogLine("Repository save END");
 
                 return CreateResponse(
                     HttpStatusCode.Created,
@@ -58,6 +62,7 @@ namespace Learning.Portfolio {
             }
             catch (Exception exc)
             {
+                context.Logger.LogLine("Generic exception");
                 context.Logger.LogLine(exc.ToString());
                 return CreateErrorResponse(exc.Message);
             }
