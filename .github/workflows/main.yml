@@ -37,16 +37,6 @@ jobs:
     - name: Unit Tests
       run: dotnet test src/UnitTests/UnitTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
 
-    - name: Smoke Tests
-      run: |
-        export URL=${{ secrets.AWS_URL }}
-        export KEY=${{ secrets.AWS_ACCESS_KEY }}
-        export SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
-        export MONGODB_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTION_STRING }}
-        dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
-        unset KEY
-        unset SECRET
-
     - name: Publish zip
       run: |
         dotnet publish src/Functions/Functions.csproj -c RELEASE -o src/publish
@@ -132,3 +122,13 @@ jobs:
       with:
         args: deploy --config ./src/Serverless/portfolio.yml --stage ${{env.AWS_STAGE}} --region ${{env.AWS_REGION}}
 
+    - name: Smoke Tests
+      run: |
+        export URL=${{ secrets.AWS_URL }}
+        export KEY=${{ secrets.AWS_ACCESS_KEY }}
+        export SECRET=${{ secrets.AWS_ACCESS_KEY_SECRET }}
+        export MONGODB_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTION_STRING }}
+        dotnet test src/SmokeTests/SmokeTests.fsproj -c Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY"
+        unset KEY
+        unset SECRET
+        unset MONGODB_CONNECTION_STRING
