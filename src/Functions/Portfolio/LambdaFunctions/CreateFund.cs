@@ -10,7 +10,7 @@ namespace Learning.Portfolio {
     {
         private int CODE_MAX_LENGTH = 10;
 
-        public CreateFund()
+        public CreateFund() :base()
         { }
 
         public CreateFund(IFundRepository repository) : base(repository)
