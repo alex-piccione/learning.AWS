@@ -10,30 +10,45 @@ namespace Learning.Portfolio {
     {
         private int CODE_MAX_LENGTH = 10;
 
-        public CreateFund() :base()
+        public CreateFund()
         { }
 
         public CreateFund(IFundRepository repository) : base(repository)
         { }
 
+
+        /*
+         function handler(event, context, callback) {
+              const timer = setTimeout(() => {
+                console.log("oh no i'm going to timeout in 3 seconds!");
+                // &c.
+              }, context.getRemainingTimeInMillis() - 3 * 1000);
+              try {
+                // rest of code...
+              } finally {
+                clearTimeout(timer);
+              }
+              callback(null, result);
+            }
+         */
+
+        // TODO: use a timer to handle the Lambda function timeout
+        private void HandleTimeout(ILambdaContext context) {
+            var time = context.RemainingTime;
+        }
+
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            context.Logger.LogLine($"Handle request. request.Body: {request.Body}");
-
             try
             {
-                context.Logger.LogLine("Request deserialization START");
                 var requestData = NormalizeRequest(GetRequest<CreateFundRequest>(request.Body));
-                context.Logger.LogLine("Request deserialization END");
 
                 ValidateRequest(requestData);
 
                 var id = Guid.NewGuid().ToString();
                 var fund = new Fund(id, requestData.Name, requestData.Code);
 
-                context.Logger.LogLine("Repository save START");
                 repository.Create(fund);
-                context.Logger.LogLine("Repository save END");
 
                 return CreateResponse(
                     HttpStatusCode.Created,
@@ -47,7 +62,7 @@ namespace Learning.Portfolio {
             }
             catch (DeserializationFailedException exc)
             {
-                context.Logger.LogLine($"JSON: {exc.Json}. {exc}");
+                context.Logger.LogLine($"JSON:/n{exc.Json}/n/n{exc}");
                 return CreateResponse(HttpStatusCode.BadRequest, $"Failed to deserialize. JSON: {exc.Json}");
             }
             catch (DeserializationException exc)
@@ -62,7 +77,6 @@ namespace Learning.Portfolio {
             }
             catch (Exception exc)
             {
-                context.Logger.LogLine("Generic exception");
                 context.Logger.LogLine(exc.ToString());
                 return CreateErrorResponse(exc.Message);
             }
