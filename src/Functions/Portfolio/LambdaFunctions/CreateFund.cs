@@ -16,27 +16,6 @@ namespace Learning.Portfolio {
         public CreateFund(IFundRepository repository) : base(repository)
         { }
 
-
-        /*
-         function handler(event, context, callback) {
-              const timer = setTimeout(() => {
-                console.log("oh no i'm going to timeout in 3 seconds!");
-                // &c.
-              }, context.getRemainingTimeInMillis() - 3 * 1000);
-              try {
-                // rest of code...
-              } finally {
-                clearTimeout(timer);
-              }
-              callback(null, result);
-            }
-         */
-
-        // TODO: use a timer to handle the Lambda function timeout
-        private void HandleTimeout(ILambdaContext context) {
-            var time = context.RemainingTime;
-        }
-
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
             try
