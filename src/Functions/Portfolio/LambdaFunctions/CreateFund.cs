@@ -41,6 +41,11 @@ namespace Learning.Portfolio {
                     }
                 );
             }
+            catch (DeserializationFailedException<Fund> exc)
+            {
+                context.Logger.LogLine(exc.ToString());
+                return CreateResponse(HttpStatusCode.BadRequest, $"Cannot deserialize request body. JSON: {exc.Json}");
+            }
             catch (DeserializationException exc)
             {
                 context.Logger.LogLine(exc.ToString());
