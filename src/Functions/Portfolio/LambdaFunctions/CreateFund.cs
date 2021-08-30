@@ -13,6 +13,9 @@ namespace Learning.Portfolio {
         public CreateFund(IFundRepository repository) :base(repository) 
         { }
 
+        public CreateFund() : base()
+        { }
+
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
             try
