@@ -2,7 +2,6 @@ using System;
 using System.Net;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Jil;
 using Learning.Exceptions;
 
 namespace Learning.Portfolio {
