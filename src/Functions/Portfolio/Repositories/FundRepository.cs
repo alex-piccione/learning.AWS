@@ -1,15 +1,64 @@
-namespace Learning.Portfolio {
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
+using System;
+
+namespace Learning.Portfolio
+{
     // interface is stored within the concrete class because it only exists to make possible injection for test purpose
-    interface IFundRepository {
-        Fund Create(Fund fund);
+    public interface IFundRepository
+    {
+        void Create(Fund fund);
+        Fund Get(string id);
+
+        void Delete(string id);
     }
 
-    class FundRepository :IFundRepository {
-        public Fund Create(Fund fund){
+    public class MongoDBFundRepository : IFundRepository
+    {
+        private string DATABASE = "Portfolio";
+        private string COLLECTION = "Fund";
+        private IMongoDatabase database;
 
-            // TODO: store
-            return fund;
+        public MongoDBFundRepository(string connectionString)
+        {
+            var client = new MongoClient(MongoClientSettings.FromConnectionString(connectionString));
+            // setting the Timeout returns this error: MongoClientSettings is frozen
+            //client.Settings.ConnectTimeout = TimeSpan.FromSeconds(30); 
+            var databaseSettings = new MongoDatabaseSettings(); // default settings
+            database = client.GetDatabase(DATABASE, databaseSettings);
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(Fund)))
+            {
+                Action<BsonClassMap<Fund>> mapping = (map) =>
+                {
+                    map.AutoMap();
+                    map.MapIdMember(fund => fund.Id);
+                    //map.SetIgnoreExtraElements(true);
+                };
+
+                BsonClassMap.RegisterClassMap(mapping);
+            }
         }
+
+        public void Create(Fund fund)
+        {
+            var collection = database.GetCollection<Fund>(COLLECTION);
+            collection.InsertOne(fund);
+        }
+
+        public Fund Get(string id)
+        {
+            var collection = database.GetCollection<Fund>(COLLECTION);
+            return collection.Find(IdFilter(id)).SingleOrDefault();
+        }
+
+        public void Delete(string id)
+        {
+            var collection = database.GetCollection<Fund>(COLLECTION);
+            collection.DeleteOne(IdFilter(id));
+        }
+
+        private static FilterDefinition<Fund> IdFilter(string id) => new FilterDefinitionBuilder<Fund>().Eq(fund => fund.Id, id);
     }
 
 }

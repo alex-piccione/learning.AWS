@@ -1,29 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-
+    <AssemblyName>Learning.IntegrationTests</AssemblyName>
     <IsPackable>false</IsPackable>
     <GenerateProgramFile>false</GenerateProgramFile>
     <UserSecretsId>learning.026d69da-e3fc-4abe-a3f4-068da978c308</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.7.2.8" />
-    <PackageReference Include="Flurl.Http" Version="3.2.0" />
-    <PackageReference Include="FsUnit" Version="4.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <Compile Include="secrets.fs" />
+    <Compile Include="MongoDBRepository.test.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="secrets.fs" />
-    <Compile Include="AWSRequestSigner.fs" />
-    <Compile Include="AWSRequestSigner.Flurl.fs" />
-    <Compile Include="Portfolio.tests.fs" />
-    <Compile Include="Program.fs" />
+    <PackageReference Include="FsUnit" Version="4.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="coverlet.collector" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Functions\Functions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

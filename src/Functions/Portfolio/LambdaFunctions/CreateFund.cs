@@ -6,9 +6,12 @@ using Jil;
 using Learning.Exceptions;
 
 namespace Learning.Portfolio {
-    class CreateFund : LambdaFunction {
-
+    class CreateFund : FundLambdaFunctionBase
+    {
         private int CODE_MAX_LENGTH = 10;
+
+        public CreateFund(IFundRepository repository) :base(repository) 
+        { }
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
@@ -21,7 +24,7 @@ namespace Learning.Portfolio {
                 var id = Guid.NewGuid().ToString();
                 var fund = new Fund(id, requestData.Name, requestData.Code);
 
-                // TODO: store using Repository
+                repository.Create(fund);
 
                 return CreateResponse(
                     HttpStatusCode.Created,
@@ -69,12 +72,12 @@ namespace Learning.Portfolio {
                 throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
         }
 
-        private string ValidateCode(string code)
-        {
-            if (code?.Length > CODE_MAX_LENGTH)
-                throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
+        //private string ValidateCode(string code)
+        //{
+        //    if (code?.Length > CODE_MAX_LENGTH)
+        //        throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
 
-            return code.ToUpperInvariant();
-        }
+        //    return code.ToUpperInvariant();
+        //}
     }
 }

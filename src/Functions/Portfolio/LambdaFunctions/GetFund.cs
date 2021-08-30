@@ -7,16 +7,24 @@ using Learning.Exceptions;
 namespace Learning.Portfolio {
     class GetFund : LambdaFunction {
 
+        private IFundRepository repository;
+
+        public GetFund(IFundRepository repository) {
+            this.repository = repository;
+        }
+
+        public GetFund()
+        {
+            var connectionString = Environment.GetEnvironmentVariable("MONGODB_CONNECTION_STRING");
+            repository = new MongoDBFundRepository(connectionString);
+        }
+
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
             try
             {
                 var id = request.GetIdFromQueryString();
-
-                // TODO: retrieve from Repository
-
-                var fund = new Fund(id, "Test fund", "TEST");
-
+                var fund = repository.Get(id);
                 return CreateOkResponse(fund);
             }
             catch (InvalidRequestDataException exc)

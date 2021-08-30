@@ -6,11 +6,17 @@
          <!-- required to generated the <proj>.runtimeconfig.json file -->
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <NoWarn>1701;1702;IDE0044</NoWarn>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.4.0" />
         <PackageReference Include="Amazon.Lambda.Core" Version="2.0.0"></PackageReference>
         <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.0.0" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.1.0" />
+        <PackageReference Include="FsUnit" Version="4.0.6" />
         <PackageReference Include="Jil" Version="2.17.0" />
+        <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+        <PackageReference Include="MongoDB.Driver.Core" Version="2.13.1" />
     </ItemGroup>
 </Project>

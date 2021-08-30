@@ -12,3 +12,4 @@ using System.Runtime.CompilerServices;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 [assembly: InternalsVisibleTo("Learning.UnitTests")]
+[assembly: InternalsVisibleTo("Learning.IntegrationTests")]
