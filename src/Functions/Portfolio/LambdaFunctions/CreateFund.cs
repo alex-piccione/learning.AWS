@@ -10,10 +10,10 @@ namespace Learning.Portfolio {
     {
         private int CODE_MAX_LENGTH = 10;
 
-        public CreateFund(IFundRepository repository) :base(repository) 
+        public CreateFund()
         { }
 
-        public CreateFund() : base()
+        public CreateFund(IFundRepository repository) : base(repository)
         { }
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
