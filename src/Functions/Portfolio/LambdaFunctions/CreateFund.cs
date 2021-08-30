@@ -41,10 +41,10 @@ namespace Learning.Portfolio {
                     }
                 );
             }
-            catch (DeserializationFailedException<Fund> exc)
+            catch (DeserializationFailedException exc)
             {
                 context.Logger.LogLine($"JSON: {exc.Json}. {exc}");
-                return CreateResponse(HttpStatusCode.BadRequest, $"Cannot deserialize request body. JSON: {exc.Json}");
+                return CreateResponse(HttpStatusCode.BadRequest, $"Failed to deserialize. JSON: {exc.Json}");
             }
             catch (DeserializationException exc)
             {
@@ -81,13 +81,5 @@ namespace Learning.Portfolio {
             else if (request.Code.Length > CODE_MAX_LENGTH)
                 throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
         }
-
-        //private string ValidateCode(string code)
-        //{
-        //    if (code?.Length > CODE_MAX_LENGTH)
-        //        throw new Exception($"Code is too long. The max allowed length is {CODE_MAX_LENGTH}.");
-
-        //    return code.ToUpperInvariant();
-        //}
     }
 }

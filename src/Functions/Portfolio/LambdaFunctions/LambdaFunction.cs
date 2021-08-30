@@ -36,7 +36,7 @@ namespace Learning.Portfolio {
             }
             catch (Exception exc)
             {
-                throw new DeserializationFailedException<T>(requestBody, exc);
+                throw new DeserializationFailedException(requestBody, typeof(T), exc);
             }
         }
     }
