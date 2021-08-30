@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Include="GetFund.tests.fs" />
       <Compile Include="CreateFund.tests.fs" />
       <Compile Include="RandomNumber.tests.fs" />
     </ItemGroup>

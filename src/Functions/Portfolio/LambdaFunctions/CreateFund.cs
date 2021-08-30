@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
@@ -22,6 +23,9 @@ namespace Learning.Portfolio {
                 var requestData = NormalizeRequest(GetRequest<CreateFundRequest>(request.Body));
 
                 ValidateRequest(requestData);
+
+                if (repository.List()?.FirstOrDefault(f => f.Name.ToLowerInvariant() == requestData.Name.ToLowerInvariant()) != null)
+                    return CreateResponse(HttpStatusCode.BadRequest, "A Fund with the same name already exists.");
 
                 var id = Guid.NewGuid().ToString();
                 var fund = new Fund(id, requestData.Name, requestData.Code);

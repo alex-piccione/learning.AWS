@@ -1,6 +1,5 @@
 using System;
 using System.Net;
-using System.Threading;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using Jil;

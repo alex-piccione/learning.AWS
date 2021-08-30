@@ -1,6 +1,8 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Learning.Portfolio
 {
@@ -11,6 +13,7 @@ namespace Learning.Portfolio
         Fund Get(string id);
 
         void Delete(string id);
+        ICollection<Fund> List();
     }
 
     public class MongoDBFundRepository : IFundRepository
@@ -59,6 +62,12 @@ namespace Learning.Portfolio
         }
 
         private static FilterDefinition<Fund> IdFilter(string id) => new FilterDefinitionBuilder<Fund>().Eq(fund => fund.Id, id);
+
+        public ICollection<Fund> List()
+        {
+            var collection = database.GetCollection<Fund>(COLLECTION);
+            return collection.Find(FilterDefinition<Fund>.Empty).ToList();
+        }
     }
 
 }

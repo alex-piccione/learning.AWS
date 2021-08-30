@@ -1,5 +1,6 @@
 ﻿namespace UnitTests
 
+open System.Collections.Generic
 open NUnit.Framework
 open Foq
 open FsUnit
@@ -8,8 +9,12 @@ open Amazon.Lambda.Core
 open Learning.Portfolio
 
 
+type createRequest = { name:string; code: string }
+    with member this.ToJson() = $@"{{ ""name"": ""{this.name}"", ""code"": ""{this.code}"" }}"
+
 type ``CreateFund Function``() =
 
+    let TEST_ID = "TEST"
     let logger = Mock<ILambdaLogger>().Create()
     let context = Mock<ILambdaContext>()
                     .Setup(fun x -> <@ x.Logger @>).Returns(logger)
@@ -29,6 +34,7 @@ type ``CreateFund Function``() =
         let request = APIGatewayProxyRequest()
         request.Body <- Jil.JSON.Serialize(requestBody, Jil.Options.CamelCase) // lower camel case
 
+        // execute
         let response = CreateFund(repository).Handle(request, context)
 
         response.StatusCode |> should equal 201
@@ -68,4 +74,28 @@ type ``CreateFund Function``() =
         let response = CreateFund(repository).Handle(request, context)
 
         response.StatusCode |> should equal 400
+
+    [<Test>]
+    member test.``CreateFund <when> Name is duplicated <should> fail with 400``() =
+
+        let name = "Test"
+        let requestBodyold = $@"{{
+            ""Name"": ""{name}"",
+            ""Code"": ""code test""
+        }}"
+        let requestBody = { name = name; code = "code"}.ToJson()
+
+        let existingFund = [|Fund("", name, "OLD")|] :> ICollection<Fund>
+        let repository = Mock<IFundRepository>()
+                            .Setup( fun rep -> <@ rep.List() @>).Returns(existingFund)
+                            .Create()
+
+        let request = APIGatewayProxyRequest()
+
+        request.Body <- requestBody
+
+        let response = CreateFund(repository).Handle(request, context)
+
+        response.StatusCode |> should equal 400
+        response.Body |> should contain "already exists"
 

@@ -5,18 +5,13 @@ using Amazon.Lambda.Core;
 using Learning.Exceptions;
 
 namespace Learning.Portfolio {
-    class GetFund : LambdaFunction {
+    class GetFund : FundLambdaFunctionBase {
 
-        private IFundRepository repository;
+        public GetFund(IFundRepository repository) :base(repository) {
+         }
 
-        public GetFund(IFundRepository repository) {
-            this.repository = repository;
-        }
-
-        public GetFund()
+        public GetFund() 
         {
-            var connectionString = Environment.GetEnvironmentVariable("MONGODB_CONNECTION_STRING");
-            repository = new MongoDBFundRepository(connectionString);
         }
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
@@ -25,7 +20,9 @@ namespace Learning.Portfolio {
             {
                 var id = request.GetIdFromQueryString();
                 var fund = repository.Get(id);
-                return CreateOkResponse(fund);
+                return (fund == null) ?
+                    CreateResponse(HttpStatusCode.NoContent, fund) :
+                    CreateOkResponse(fund);
             }
             catch (InvalidRequestDataException exc)
             {
