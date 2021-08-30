@@ -18,6 +18,8 @@ namespace Learning.Portfolio {
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
+            context.Logger.LogLine("Handle request");
+
             try
             {
                 var requestData = NormalizeRequest(GetRequest<CreateFundRequest>(request.Body));
