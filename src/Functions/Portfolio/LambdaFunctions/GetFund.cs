@@ -16,9 +16,12 @@ namespace Learning.Portfolio {
 
         public override APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
+            context.Logger.LogLine($"PathParameters: {string.Join(", ", request.PathParameters.Keys)}");
+
             try
             {
-                var id = request.GetIdFromQueryString();
+                var id = request.GetIdFromPath();
+
                 var fund = repository.Get(id);
                 return (fund == null) ?
                     CreateResponse(HttpStatusCode.NoContent, fund) :
