@@ -30,7 +30,7 @@ type ``GetFund Function``() =
                 .Create()
 
         let request = APIGatewayProxyRequest()
-        request.QueryStringParameters <- dict ["id", TEST_ID]
+        request.PathParameters <- dict ["id", TEST_ID]
 
         // execute
         let response = GetFund(repository).Handle(request, context)
@@ -48,7 +48,7 @@ type ``GetFund Function``() =
     member test.``GetFund <when> the record does not exists <should> return 204 - empty``() =
 
         let request = APIGatewayProxyRequest()
-        request.QueryStringParameters <- dict ["id", TEST_ID]
+        request.PathParameters <- dict ["id", TEST_ID]
 
         // execute
         let response = GetFund(repository).Handle(request, context)
