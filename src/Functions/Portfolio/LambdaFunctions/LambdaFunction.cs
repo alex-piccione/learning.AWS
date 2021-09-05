@@ -39,6 +39,7 @@ namespace Learning.Portfolio {
         }
 
 
+        protected APIGatewayProxyResponse CreateOkResponse() => new APIGatewayProxyResponse { StatusCode = 200 };
         protected APIGatewayProxyResponse CreateOkResponse<T>(T data) => CreateResponse(HttpStatusCode.OK, data);
         protected APIGatewayProxyResponse CreateErrorResponse(string message = null) 
         => new APIGatewayProxyResponse
