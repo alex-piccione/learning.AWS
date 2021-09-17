@@ -70,3 +70,15 @@ variables: https://docs.github.com/en/actions/reference/context-and-expression-s
 
 ## Severless
 serverless.yml syntax: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+
+
+## Configuration
+The __configuration.json__ file inside "AWS Lambda" project contains info that cannot be stored in the code repository.  
+During the deployment a precise step replace defined keys with the secrets stored in the deploy system (e.g. GitHub Actions).  
+
+## Dependency Injection
+I don't know the best way to make possible having dependency injection, for example to inject database providers.  
+I saw some solutions but it seems overcomplicated.  
+To solve the problem of having a parameterless constructor for the Lambda Functions and inject the moxked providers for test purpose
+I'm using a default empty contructor and also one that accepts the provider(s) interface.  
+When the parameterless contructor is used the code look at a configuration file and create the provider.  
