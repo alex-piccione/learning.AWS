@@ -24,10 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serverless", "Serverless", 
 	ProjectSection(SolutionItems) = preProject
 		Serverless\portfolio.yml = Serverless\portfolio.yml
 		Serverless\shared-variables.yml = Serverless\shared-variables.yml
-		stackoverflow_serverless.yml = stackoverflow_serverless.yml
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntegrationTests", "IntegrationTests\IntegrationTests.fsproj", "{BCB06A34-DC4F-46B8-B288-C16624314FEF}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "IntegrationTests", "IntegrationTests\IntegrationTests.fsproj", "{BCB06A34-DC4F-46B8-B288-C16624314FEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

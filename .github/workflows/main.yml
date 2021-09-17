@@ -31,7 +31,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-central-1
 
-    #substitute production appsettings entries to appsettings json file
+    # substitute production configuration entries using secrets
     - name: Substitute configuration variables
       uses: microsoft/variable-substitution@v1
       with:

@@ -19,7 +19,6 @@ functions:
 
 
 
-
 I have a GitHub Actions yaml file that in a Job is doing this:
 ```yaml
     - name: Serverless Stuff
