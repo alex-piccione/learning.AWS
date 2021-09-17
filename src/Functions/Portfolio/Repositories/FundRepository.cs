@@ -11,7 +11,7 @@ namespace Learning.Portfolio
     {
         void Create(Fund fund);
         Fund Get(string id);
-
+        void Update(Fund fund);
         void Delete(string id);
         ICollection<Fund> List();
     }
@@ -53,6 +53,15 @@ namespace Learning.Portfolio
         {
             var collection = database.GetCollection<Fund>(COLLECTION);
             return collection.Find(IdFilter(id)).SingleOrDefault();
+        }
+
+        public void Update(Fund fund)
+        {
+            var collection = database.GetCollection<Fund>(COLLECTION);
+            var update = new UpdateDefinitionBuilder<Fund>()
+                .Set(f => f.Code, fund.Code)
+                .Set(f => f.Name, fund.Name);
+            collection.UpdateOne(IdFilter(fund.Id), update);
         }
 
         public void Delete(string id)
