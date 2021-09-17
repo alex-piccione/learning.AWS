@@ -69,6 +69,16 @@ functions:
           method: GET
           cors: true
 
+  UpdateFund:
+    handler: ${self:provider.environment.handler_prefix}.UpdateFund::Handle
+    package: 
+      <<: *package
+    events:
+      - http:
+          path: portfolio/fund
+          method: PUT
+          cors: true
+
   DeleteFund:
     handler: ${self:provider.environment.handler_prefix}.DeleteFund::Handle
     package:
