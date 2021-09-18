@@ -88,14 +88,3 @@ functions:
           path: portfolio/fund/{id}
           method: DELETE
           cors: true
-
-  UpdateFund:
-    handler: ${self:provider.environment.handler_prefix}.UpdateFund::Handle
-    package:
-      <<: *package
-    events:
-      - http:
-          path: portfolio/fund/{id}
-          method: PUT
-          cors: true
-
