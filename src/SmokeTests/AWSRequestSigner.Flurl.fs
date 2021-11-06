@@ -11,7 +11,7 @@ type Extensions() =
         let url = request.Url.Path
 
         let querystring = request.Url.Query
-        let content = content.Value
+        let content = if content.IsSome then content.Value else ""
 
         if not(request.Headers.Contains("Host")) then
             request.Headers.Add("Host", request.Url.Host)

@@ -108,8 +108,8 @@ let createAuhtorizationHeaders(method:string, path:string, queryString:string, c
         for header in headersToSign.OrderBy(fun a -> a.Key.ToLowerInvariant(), StringComparer.OrdinalIgnoreCase) do
             canonicalRequest.Append (header.Key.ToLowerInvariant()) |> ignore
             canonicalRequest.Append ":" |> ignore
-            // TODO manage mutivalue headers
-            //canonicalRequest.Append (String.Join(",", header.Value.Select(fun s -> s.Trim()))) |> ignore
+            // TODO manage multivalue headers
+            // canonicalRequest.Append (String.Join(",", header.Value.Select(fun s -> s.Trim()))) |> ignore
             canonicalRequest.Append header.Value |> ignore
             canonicalRequest.Append "\n" |> ignore
             signedHeadersList.Add(header.Key.ToLowerInvariant())

@@ -11,13 +11,13 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.4.0" />
-        <PackageReference Include="Amazon.Lambda.Core" Version="2.0.0"></PackageReference>
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0"></PackageReference>
         <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.0.0" />
-        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.1.0" />
-        <PackageReference Include="FsUnit" Version="4.0.6" />
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.2.0" />
+        <PackageReference Include="FsUnit" Version="4.0.7" />
         <PackageReference Include="Jil" Version="2.17.0" />        
-        <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
-        <PackageReference Include="MongoDB.Driver.Core" Version="2.13.1" />
+        <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
+        <PackageReference Include="MongoDB.Driver.Core" Version="2.13.2" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
         <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
     </ItemGroup>

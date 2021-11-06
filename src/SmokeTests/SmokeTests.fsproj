@@ -9,19 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.7.2.8" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.3.33" />
     <PackageReference Include="Flurl.Http" Version="3.2.0" />
-    <PackageReference Include="FsUnit" Version="4.0.6" />
+    <PackageReference Include="FsUnit" Version="4.0.7" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="secrets.fs" />
     <Compile Include="AWSRequestSigner.fs" />
     <Compile Include="AWSRequestSigner.Flurl.fs" />
+    <Compile Include="Company.tests.fs" />
     <Compile Include="Portfolio.tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
