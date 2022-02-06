@@ -61,7 +61,6 @@ Assume you have the src/myHandler.cs file.
 https://www.serverless.com/blog/cors-api-gateway-survival-guide
 
 ## Utils
-
 ``zip`` command: https://www.cyberciti.biz/faq/how-to-zip-a-folder-in-ubuntu-linux/
 
 ## GitHub Actions
